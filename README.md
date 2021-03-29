@@ -19,6 +19,7 @@ In this repo a short overview of important Machine Learning algorithms is provid
         - [Support vector machine](#svm)
         - [Decision trees](#dec_trees)
         - [Instance-based algorithms -KNN](#instance_based)
+        - [Naive Bayes](#naive_bayes)
         - [Neural networks](#neural_net)
     - [Unsupervised Learning](#usl)
         - [Clustering algorithms](#clustering)
