@@ -19,6 +19,7 @@ In this repo a short overview of important Machine Learning algorithms is provid
         - [Logistic regression](#log_reg)
         - [Support vector machine](#svm)
         - [Decision trees](#dec_trees)
+        - [Random Forest](#random_forest)
         - [Instance-based algorithms -KNN](#instance_based)
         - [Naive Bayes](#naive_bayes)
         - [Neural networks](#neural_net)
@@ -211,7 +212,7 @@ The fastest and simplest pruning method is to work through each leaf node in the
 
 More sophisticated pruning methods can be used such as cost complexity pruning (also called weakest link pruning) where a learning parameter (alpha) is used to weigh whether nodes can be removed based on the size of the sub-tree.
 
-### Random Forrest <a name="random_forest"></a>
+### Random Forest <a name="random_forest"></a>
 Decision Trees (classification or regression) are the building blocks of the random forest model.
 
 Random forest, like its name implies, consists of a large number of individual Decision Trees that operate as an ensemble. Each individual tree in the random forest spits out a class prediction and the class with the most votes becomes our model’s prediction (see figure below).
