@@ -4,6 +4,7 @@
 [image4]: assets/SVR1.png "image4"
 [image5]: assets/knn.png "image5"
 [image6]: assets/dnn.png "image6"
+[image7]: assets/rand_forest1.png "image7"
 
 # Machine Learning
 In this repo a short overview of important Machine Learning algorithms is provided.
@@ -210,6 +211,22 @@ The fastest and simplest pruning method is to work through each leaf node in the
 
 More sophisticated pruning methods can be used such as cost complexity pruning (also called weakest link pruning) where a learning parameter (alpha) is used to weigh whether nodes can be removed based on the size of the sub-tree.
 
+### Random Forrest <a name="random_forest"></a>
+Decision Trees (classification or regression) are the building blocks of the random forest model.
+
+Random forest, like its name implies, consists of a large number of individual Decision Trees that operate as an ensemble. Each individual tree in the random forest spits out a class prediction and the class with the most votes becomes our model’s prediction (see figure below).
+
+![image7]
+
+The fundamental concept behind random forest is a simple but powerful one — the wisdom of crowds. In data science speak, the reason that the random forest model works so well is:
+
+A large number of relatively uncorrelated models (trees) operating as a committee will outperform any of the individual constituent models.
+
+The reason for this effect is that the trees protect each other from their individual errors. While some trees may be wrong, many other trees will be right, so as a group the trees are able to move in the correct direction. So the prerequisites for random forest to perform well are:
+
+1. We need **features that have at least some predictive power** so that models built using those features do better than random guessing.
+2. The predictions (and therefore the errors) made by the individual trees need to have **low correlations** with each other.
+
 ### Instance-based algorithms <a name="instance_based"></a>
 A good example of an instance-based algorithm is **K-Nearest Neighbor** or **KNN**. KNN algorithm is a simple algorithm that can be used to solve both classification and regression problems. The KNN algorithm assumes that similar things exist in close proximity. 
 
@@ -367,6 +384,8 @@ Machine Learning
 * [Classification And Regression Trees for Machine Learning](https://machinelearningmastery.com/classification-and-regression-trees-for-machine-learning/)
 
 * [Naive Bayes](https://towardsdatascience.com/naive-bayes-classifier-81d512f50a7c)
+
+* [Random Forest](https://towardsdatascience.com/understanding-random-forest-58381e0602d2)
 
 Git/Github
 * [GitFlow](https://datasift.github.io/gitflow/IntroducingGitFlow.html)
