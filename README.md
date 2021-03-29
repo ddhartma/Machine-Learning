@@ -385,7 +385,7 @@ Machine Learning
 
 * [Naive Bayes](https://towardsdatascience.com/naive-bayes-classifier-81d512f50a7c)
 
-* [Random Forest](https://towardsdatascience.com/understanding-random-forest-58381e0602d2)
+* [Understanding Random Forest](https://towardsdatascience.com/understanding-random-forest-58381e0602d2)
 
 Git/Github
 * [GitFlow](https://datasift.github.io/gitflow/IntroducingGitFlow.html)
