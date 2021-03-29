@@ -266,6 +266,14 @@ The approach K-means follows to solve the problem is called Expectation-Maximiza
 ### Association algorithms
 Association algorithms find patterns and relationships in data and identify frequent ‘if-then’ relationships called association rules. These are similar to the rules used in data mining.
 
+## Step 3: Training the algorithm to create the model
+
+Training the algorithm is an iterative process–it involves running variables through the algorithm, comparing the output with the results it should have produced, adjusting weights and biases within the algorithm that might yield a more accurate result, and running the variables again until the algorithm returns the correct result most of the time. The resulting trained, accurate algorithm is the machine learning model—an important distinction to note, because 'algorithm' and 'model' are incorrectly used interchangeably, even by machine learning mavens.
+
+## Step 4: Using and improving the model 
+
+The final step is to use the model with new data and, in the best case, for it to improve in accuracy and effectiveness over time. Where the new data comes from will depend on the problem being solved. For example, a machine learning model designed to identify spam will ingest email messages, whereas a machine learning model that drives a robot vacuum cleaner will ingest data resulting from real-world interaction with moved furniture or new objects in the room.
+
 
 ## Setup Instructions <a name="Setup_Instructions"></a>
 The following is a brief set of instructions on setting up a cloned repository.
