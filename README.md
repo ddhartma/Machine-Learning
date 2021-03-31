@@ -79,7 +79,7 @@ The sum of the squares of the residual errors are called the **Residual Sum of S
 
 The average variation of points around the fitted regression line is called the **Residual Standard Error or RSE**. This is one of the metrics used to evaluate the overall quality of the fitted regression model. The lower the **RSE**, the better it is.
 
-Since the mean error term is zero, the outcome variable y can be approximately estimated as follow:
+Since the mean error term is zero, the outcome variable y can be approximately estimated like this:
 
 <img src="https://render.githubusercontent.com/render/math?math=Y = b0 %2B b1 \cdot X" width="150px">
 
@@ -185,7 +185,7 @@ A decision tree is drawn upside down with its **root at the top**. In the image 
 **Recursive Binary Splitting**:
 In this procedure all the features are considered and different split points are tried and tested using a cost function. The split with the best cost (or lowest cost) is selected.
 
-Titanic dataset: There are 3 features, and hence 3 candidate splits:
+Titanic dataset: There are 3 features, and hence 3 candidate's splits:
 
 - Calculate how much accuracy each split will cost
 - The split that costs least is chosen (here: sex of the passenger) 
@@ -204,7 +204,7 @@ For classification the Gini index function is used which provides an indication 
 
 where **G** is the **Gini index** over all classes, **pk** are the proportion of training instances with class k in the rectangle of interest. A node that has all classes of the same type (perfect class purity) will have G=0, whereas a G that has a 50-50 split of classes for a binary classification problem (worst purity) will have a G=0.5.
 
-**Stopping Criterion**: As a problem usually has a large set of features, it results in large number of splits, which in turn gives a huge tree. Such trees are complex and can lead to overfitting. So, we need to know when to stop. One way of doing this is to set a **minimum number of training inputs** to use on each leaf. For example, we can use a minimum of 10 passengers to reach a decision(died or survived), and ignore any leaf that takes less than 10 passengers. Another way is to set maximum depth of your model. Maximum depth refers to the the length of the longest path from a root to a leaf.
+**Stopping Criterion**: As a problem usually has a large set of features, it results in large number of splits, which in turn gives a huge tree. Such trees are complex and can lead to overfitting. So, we need to know when to stop. One way of doing this is to set a **minimum number of training inputs** to use on each leaf. For example, we can use a minimum of 10 passengers to reach a decision(died or survived), and ignore any leaf that takes less than 10 passengers. Another way is to set maximum depth of your model. Maximum depth refers to the length of the longest path from a root to a leaf.
 
 **Pruning** The performance of a tree can be further increased by pruning. It involves removing the branches that make use of features having low importance. This way, we reduce the complexity of tree, and thus increasing its predictive power by reducing overfitting.
 
@@ -229,7 +229,7 @@ The reason for this effect is that the trees protect each other from their indiv
 2. The predictions (and therefore the errors) made by the individual trees need to have **low correlations** with each other.
 
 ### Instance-based algorithms <a name="instance_based"></a>
-A good example of an instance-based algorithm is **K-Nearest Neighbor** or **KNN**. KNN algorithm is a simple algorithm that can be used to solve both classification and regression problems. The KNN algorithm assumes that similar things exist in close proximity. 
+A good example of an instance-based algorithm is **K-Nearest Neighbor** or **KNN**. KNN algorithm is a simple algorithm that can be used to solve both classification and regression problems. The KNN algorithm assumes that similar things exist in proximity. 
 
 ![image5]
 
@@ -300,7 +300,7 @@ The way K-means algorithm works is as follows:
 3. Compute the **sum of the squared distance** between data points and all centroids.
 5. **Assign** each data point to the **closest cluster** (centroid).
 6. **Compute the centroids** for the clusters by taking the average of the all data points that belong to each cluster.
-7. **Keep iterating** 3-6 until there is no change to the centroids. i.e assignment of data points to clusters isn’t changing.
+7. **Keep iterating** 3-6 until there is no change to the centroids. i.e. assignment of data points to clusters isn’t changing.
 
 The approach K-means follows to solve the problem is called Expectation-Maximization. The E-step is assigning the data points to the closest cluster. The M-step is computing the centroid of each cluster. 
 
@@ -314,7 +314,7 @@ Training the algorithm is an iterative process–it involves running variables t
 
 ## Step 4: Using and improving the model <a name="using"></a>
 
-The final step is to use the model with new data and, in the best case, for it to improve in accuracy and effectiveness over time. Where the new data comes from will depend on the problem being solved. For example, a machine learning model designed to identify spam will ingest email messages, whereas a machine learning model that drives a robot vacuum cleaner will ingest data resulting from real-world interaction with moved furniture or new objects in the room.
+The final step is to use the model with new data and, in the best case, for it to improve in accuracy and effectiveness over time. From where the new data comes from will depend on the problem being solved. For example, a machine learning model designed to identify spam will ingest email messages, whereas a machine learning model that drives a robot vacuum cleaner will ingest data resulting from real-world interaction with moved furniture or new objects in the room.
 
 
 ## Setup Instructions <a name="Setup_Instructions"></a>
@@ -324,7 +324,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 
 
-### Prerequisites: Installation of Python via Anaconda and Command Line Interaface <a name="Prerequisites"></a>
+### Prerequisites: Installation of Python via Anaconda and Command Line Interface <a name="Prerequisites"></a>
 - Install [Anaconda](https://www.anaconda.com/distribution/). Install Python 3.7 - 64 Bit
 
 - Upgrade Anaconda via
