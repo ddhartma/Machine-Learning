@@ -52,7 +52,7 @@ An algorithm is a set of **statistical processing steps**. The type of algorithm
 
 Common types of machine learning algorithms for use with labeled data include the following:
 
-- **Regression algorithms**: is used to understand the relationship between dependent and independent variables. It is commonly used to make projections, such as for sales revenue for a given business. Linear regression, logistical regression, and polynomial regression are popular regression algorithms. Output values are continuous.
+- **Regression**: is used to understand the relationship between dependent and independent variables. It is commonly used to make projections, such as for sales revenue for a given business. Linear regression, logistical regression, and polynomial regression are popular regression algorithms. Output values are continuous.
 
 - **Classification** uses an algorithm to accurately assign test data into specific categories. It recognizes specific entities within the dataset and attempts to draw some conclusions on how those entities should be labeled or defined. Common classification algorithms are linear classifiers, support vector machines (SVM), decision trees, k-nearest neighbor, and random forest, which are described in more detail below.
 
