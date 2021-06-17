@@ -6,7 +6,7 @@
 [image6]: assets/dnn.png "image6"
 [image7]: assets/rand_forest1.png "image7"
 
-# Machine Learning
+# Machine Learning Concepts
 In this repo a short overview of important Machine Learning algorithms is provided.
 
 ## Content
