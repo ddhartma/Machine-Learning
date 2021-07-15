@@ -36,17 +36,17 @@ In this repo a short overview of important Machine Learning algorithms is provid
 Machine learning is a method of data analysis that automates ***analytical model building***. Machine learning focuses on applications that learn from experience and improve their decision-making or predictive accuracy over time. 
 It is a branch of artificial intelligence based on the idea that systems can ***learn from data***, ***identify patterns*** and ***make decisions*** with minimal human intervention.
 
-## How machine learning works <a name="ml_works"></a> 
+## How machine learning works <a id="ml_works"></a> 
 
 There are four basic steps for building a machine learning application (or model). These are typically performed by data scientists working closely with the business professionals for whom the model is being developed.
 
-### Step 1: Select and prepare a training data set <a name="step_1"></a> 
+### Step 1: Select and prepare a training data set <a id="step_1"></a> 
 
 **Training data** is a data set used to  solve the underlying problem. The training data can be **labeled** to call out classifications the model will need to identify. In addition, training data can be **unlabeled**, and the model will need to extract features and assign classifications on its own.
 
 In either case, the training data needs to be properly prepared: **cleaned**, **randomized**, and **checked for imbalances or biases** that could impact the training. It should also be divided into two subsets: the **training subset**, which will be used to train the application, and the **validation subset**, used to test and refine it. 
 
-### Step 2: Choose an algorithm to run on the training data set <a name="step_2"></a> 
+### Step 2: Choose an algorithm to run on the training data set <a id="step_2"></a> 
 
 An algorithm is a set of **statistical processing steps**. The type of algorithm depends on the **type (labeled or unlabeled) and amount of data** in the training data set and on the **type of problem** to be solved.
 
@@ -56,8 +56,8 @@ Common types of machine learning algorithms for use with labeled data include th
 
 - **Classification** uses an algorithm to accurately assign test data into specific categories. It recognizes specific entities within the dataset and attempts to draw some conclusions on how those entities should be labeled or defined. Common classification algorithms are linear classifiers, support vector machines (SVM), decision trees, k-nearest neighbor, and random forest, which are described in more detail below.
 
-### Supervised Learning <a name="sl"></a>
-### Linear regression <a name="linear_reg"></a>
+### Supervised Learning <a id="sl"></a>
+### Linear regression <a id="linear_reg"></a>
 Linear regression is used to predict the value of a dependent variable based on the value of an independent variable. For example, a linear regression algorithm could be trained to predict a salesperson’s annual sales (the dependent variable) based on its relationship to the salesperson’s education or years of experience (the independent variables.)
 A linear regression line has an equation of the form 
 
@@ -87,7 +87,7 @@ Mathematically, the beta coefficients (**b0** and **b1**) are determined so that
 
 Once, the beta coefficients are calculated, a **t-test** is performed to check whether or not these coefficients are significantly different from zero. A non-zero beta coefficients means that there is a **significant relationship** between the predictors (**X**) and the outcome variable (**Y**).
 
-### Logistic regression <a name="log_reg"></a>
+### Logistic regression <a id="log_reg"></a>
 Logistic regression can be used when the dependent variable is binary in nature: A or B, 0 or 1, yes or no, diseased or non-diseased.
 
 There can be one or multiple independent predictor variables (X). 
@@ -131,7 +131,7 @@ Note that, the probability can be calculated from the odds as
 
 <img src="https://render.githubusercontent.com/render/math?math=p = Odds/(1 %2B Odds)" width="220px">
 
-### Support vector machine <a name="svm"></a>
+### Support vector machine <a id="svm"></a>
 A support vector machine is a popular supervised learning model used for both classification and regression. That said, it is typically leveraged for classification problems, constructing a hyperplane where the distance between two classes of data points is at its maximum.
 
 
@@ -173,7 +173,7 @@ Thus, any hyperplane that satisfies our SVR should satisfy:
 Hence, we are going to take only those points that are within the decision boundary and have the least error rate.
 
 
-### Decision trees <a name="dec_trees"></a>
+### Decision trees <a id="dec_trees"></a>
 The decision tree method is a powerful and popular predictive machine learning technique that is used for both **Classification** and **Regression**. So, it is also known as Classification and Regression Trees (CART). We use Classification Trees when need to classify the targets (e.g. passenger survived or died) and Regression Trees when we need to predict continuous values like price of a house. In general, Decision Tree algorithms are referred to as **CART** or **Classification and Regression Trees**.
 
 In case of classification: Decision Trees use classified data to make recommendations based on a set of decision rules.
@@ -212,7 +212,7 @@ The fastest and simplest pruning method is to work through each leaf node in the
 
 More sophisticated pruning methods can be used such as cost complexity pruning (also called weakest link pruning) where a learning parameter (alpha) is used to weigh whether nodes can be removed based on the size of the sub-tree.
 
-### Random Forest <a name="random_forest"></a>
+### Random Forest <a id="random_forest"></a>
 Decision Trees (classification or regression) are the building blocks of the random forest model.
 
 Random forest, like its name implies, consists of a large number of individual Decision Trees that operate as an ensemble. Each individual tree in the random forest spits out a class prediction and the class with the most votes becomes our model’s prediction (see figure below).
@@ -228,7 +228,7 @@ The reason for this effect is that the trees protect each other from their indiv
 1. We need **features that have at least some predictive power** so that models built using those features do better than random guessing.
 2. The predictions (and therefore the errors) made by the individual trees need to have **low correlations** with each other.
 
-### Instance-based algorithms <a name="instance_based"></a>
+### Instance-based algorithms <a id="instance_based"></a>
 A good example of an instance-based algorithm is **K-Nearest Neighbor** or **KNN**. KNN algorithm is a simple algorithm that can be used to solve both classification and regression problems. The KNN algorithm assumes that similar things exist in proximity. 
 
 ![image5]
@@ -250,7 +250,7 @@ The straight-line distance - **Euclidean distance** - is a popular and familiar 
 7. If **regression**, return the **mean of the K labels**
 8. If **classification**, return the **mode of the K labels**
 
-### Naive Bayes <a name="naive_bayes"></a>
+### Naive Bayes <a id="naive_bayes"></a>
 A Naive Bayes classifier is a probabilistic machine learning model that’s used for classification task. It adopts the principle of class conditional independence from the Bayes Theorem. 
 
 Bayes Theorem:
@@ -279,19 +279,19 @@ In the actualcase of ***playing golf***, the class variable **Y** has only two o
 <img src="https://render.githubusercontent.com/render/math?math=Y = argmax(P(Y|x1,x2,...xn))" width="350px">
 
 
-### Neural networks <a name="neural_net"></a>
+### Neural networks <a id="neural_net"></a>
 Primarily leveraged for **deep learning** algorithms, neural networks process training data by mimicking the interconnectivity of the human brain through layers of nodes. Each node is made up of inputs, weights, a bias (or threshold), and an output. If that output value exceeds a given threshold, it “fires” or activates the node, passing data to the next layer in the network. Neural networks learn this mapping function through supervised learning, adjusting based on the loss function through the process of gradient descent. When the cost function is at or near zero, we can be confident in the model’s accuracy to yield the correct answer.
 
 ![image6]
 
-### Unsupervised Learning <a name="usl"></a>
+### Unsupervised Learning <a id="usl"></a>
 
 Algorithms for use with **unlabeled data** include the following:
 
-### Clustering algorithms <a name="clustering"></a>
+### Clustering algorithms <a id="clustering"></a>
 Think of clusters as groups. Clustering focuses on **identifying groups of similar records** and labeling the records according to the group to which they belong. This is done **without prior knowledge** about the groups and their characteristics. In other words, we try to find **homogeneous subgroups** within the data such that data points in each cluster are as similar as possible according to a similarity measure such as **euclidean-based distance** or **correlation-based distance**. The decision of which similarity measure to use is application-specific. Types of clustering algorithms include the K-means, TwoStep, and Kohonen clustering.
 
-### K-means <a name="k_means"></a>
+### K-means <a id="k_means"></a>
 
 The way K-means algorithm works is as follows:
 
@@ -305,26 +305,26 @@ The way K-means algorithm works is as follows:
 The approach K-means follows to solve the problem is called Expectation-Maximization. The E-step is assigning the data points to the closest cluster. The M-step is computing the centroid of each cluster. 
 
 
-### Association algorithms <a name="asso_algo"></a>
+### Association algorithms <a id="asso_algo"></a>
 Association algorithms find patterns and relationships in data and identify frequent ‘if-then’ relationships called association rules. These are similar to the rules used in data mining.
 
-## Step 3: Training the algorithm to create the model <a name="training"></a>
+## Step 3: Training the algorithm to create the model <a id="training"></a>
 
 Training the algorithm is an iterative process–it involves running variables through the algorithm, comparing the output with the results it should have produced, adjusting weights and biases within the algorithm that might yield a more accurate result, and running the variables again until the algorithm returns the correct result most of the time. The resulting trained, accurate algorithm is the machine learning model—an important distinction to note, because 'algorithm' and 'model' are incorrectly used interchangeably, even by machine learning mavens.
 
-## Step 4: Using and improving the model <a name="using"></a>
+## Step 4: Using and improving the model <a id="using"></a>
 
 The final step is to use the model with new data and, in the best case, for it to improve in accuracy and effectiveness over time. From where the new data comes from will depend on the problem being solved. For example, a machine learning model designed to identify spam will ingest email messages, whereas a machine learning model that drives a robot vacuum cleaner will ingest data resulting from real-world interaction with moved furniture or new objects in the room.
 
 
-## Setup Instructions <a name="Setup_Instructions"></a>
+## Setup Instructions <a id="Setup_Instructions"></a>
 The following is a brief set of instructions on setting up a cloned repository.
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 
 
-### Prerequisites: Installation of Python via Anaconda and Command Line Interface <a name="Prerequisites"></a>
+### Prerequisites: Installation of Python via Anaconda and Command Line Interface <a id="Prerequisites"></a>
 - Install [Anaconda](https://www.anaconda.com/distribution/). Install Python 3.7 - 64 Bit
 
 - Upgrade Anaconda via
@@ -338,7 +338,7 @@ $ conda upgrade --all
 $ export PATH="/path/to/anaconda/bin:$PATH"
 ```
 
-### Clone the project <a name="Clone_the_project"></a>
+### Clone the project <a id="Clone_the_project"></a>
 - Open your Command Line Interface
 - Change Directory to your project older, e.g. `cd my_github_projects`
 - Clone the Github Project inside this folder with Git Bash (Terminal) via:
@@ -373,10 +373,10 @@ pyspark
 $ conda env list
 ```
 
-## Acknowledgments <a name="Acknowledgments"></a>
+## Acknowledgments <a id="Acknowledgments"></a>
 * This project is part of the Udacity Nanodegree program 'Data Science'. Please check this [link](https://www.udacity.com) for more information.
 
-## Further Links <a name="Further_Links"></a>
+## Further Links <a id="Further_Links"></a>
 Machine Learning
 * [Machine Learning - IBM](https://www.ibm.com/cloud/learn/machine-learning)
 * [Supervised Learning - IBM](https://www.ibm.com/cloud/learn/supervised-learning)
