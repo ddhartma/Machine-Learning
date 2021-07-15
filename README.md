@@ -1,10 +1,23 @@
-[image1]: assets/decision_tree.png "image1"
-[image2]: assets/linear_regression.png "image2"
-[image3]: assets/hyperplane.png "image3"
-[image4]: assets/SVR1.png "image4"
-[image5]: assets/knn.png "image5"
-[image6]: assets/dnn.png "image6"
-[image7]: assets/rand_forest1.png "image7"
+[image1]: assets/decision_tree.png 
+[image2]: assets/linear_regression.png 
+[image3]: assets/hyperplane.png 
+[image4]: assets/SVR1.png 
+[image5]: assets/knn.png 
+[image6]: assets/dnn.png
+[image7]: assets/rand_forest1.png 
+[image8]: assets/8.png 
+[image9]: assets/9.png 
+[image10]: assets/10.png 
+[image11]: assets/11.png 
+[image12]: assets/12.png 
+[image13]: assets/13.png 
+[image14]: assets/14.png 
+[image15]: assets/15.png 
+[image16]: assets/16.png 
+[image17]: assets/17.png 
+[image18]: assets/18.png 
+
+
 
 # Machine Learning Concepts
 In this repo a short overview of important Machine Learning algorithms is provided.
@@ -36,17 +49,17 @@ In this repo a short overview of important Machine Learning algorithms is provid
 Machine learning is a method of data analysis that automates ***analytical model building***. Machine learning focuses on applications that learn from experience and improve their decision-making or predictive accuracy over time. 
 It is a branch of artificial intelligence based on the idea that systems can ***learn from data***, ***identify patterns*** and ***make decisions*** with minimal human intervention.
 
-## How machine learning works <a id="ml_works"></a> 
+# How machine learning works <a id="ml_works"></a> 
 
 There are four basic steps for building a machine learning application (or model). These are typically performed by data scientists working closely with the business professionals for whom the model is being developed.
 
-### Step 1: Select and prepare a training data set <a id="step_1"></a> 
+## Step 1: Select and prepare a training data set <a id="step_1"></a> 
 
 **Training data** is a data set used to  solve the underlying problem. The training data can be **labeled** to call out classifications the model will need to identify. In addition, training data can be **unlabeled**, and the model will need to extract features and assign classifications on its own.
 
 In either case, the training data needs to be properly prepared: **cleaned**, **randomized**, and **checked for imbalances or biases** that could impact the training. It should also be divided into two subsets: the **training subset**, which will be used to train the application, and the **validation subset**, used to test and refine it. 
 
-### Step 2: Choose an algorithm to run on the training data set <a id="step_2"></a> 
+## Step 2: Choose an algorithm to run on the training data set <a id="step_2"></a> 
 
 An algorithm is a set of **statistical processing steps**. The type of algorithm depends on the **type (labeled or unlabeled) and amount of data** in the training data set and on the **type of problem** to be solved.
 
@@ -56,8 +69,8 @@ Common types of machine learning algorithms for use with labeled data include th
 
 - **Classification** uses an algorithm to accurately assign test data into specific categories. It recognizes specific entities within the dataset and attempts to draw some conclusions on how those entities should be labeled or defined. Common classification algorithms are linear classifiers, support vector machines (SVM), decision trees, k-nearest neighbor, and random forest, which are described in more detail below.
 
-### Supervised Learning <a id="sl"></a>
-### Linear regression <a id="linear_reg"></a>
+## Supervised Learning <a id="sl"></a>
+## Linear regression <a id="linear_reg"></a>
 Linear regression is used to predict the value of a dependent variable based on the value of an independent variable. For example, a linear regression algorithm could be trained to predict a salesperson’s annual sales (the dependent variable) based on its relationship to the salesperson’s education or years of experience (the independent variables.)
 A linear regression line has an equation of the form 
 
@@ -87,7 +100,7 @@ Mathematically, the beta coefficients (**b0** and **b1**) are determined so that
 
 Once, the beta coefficients are calculated, a **t-test** is performed to check whether or not these coefficients are significantly different from zero. A non-zero beta coefficients means that there is a **significant relationship** between the predictors (**X**) and the outcome variable (**Y**).
 
-### Logistic regression <a id="log_reg"></a>
+## Logistic regression <a id="log_reg"></a>
 Logistic regression can be used when the dependent variable is binary in nature: A or B, 0 or 1, yes or no, diseased or non-diseased.
 
 There can be one or multiple independent predictor variables (X). 
@@ -131,7 +144,7 @@ Note that, the probability can be calculated from the odds as
 
 <img src="https://render.githubusercontent.com/render/math?math=p = Odds/(1 %2B Odds)" width="220px">
 
-### Support vector machine <a id="svm"></a>
+## Support vector machine <a id="svm"></a>
 A support vector machine is a popular supervised learning model used for both classification and regression. That said, it is typically leveraged for classification problems, constructing a hyperplane where the distance between two classes of data points is at its maximum.
 
 
@@ -173,47 +186,276 @@ Thus, any hyperplane that satisfies our SVR should satisfy:
 Hence, we are going to take only those points that are within the decision boundary and have the least error rate.
 
 
-### Decision trees <a id="dec_trees"></a>
-The decision tree method is a powerful and popular predictive machine learning technique that is used for both **Classification** and **Regression**. So, it is also known as Classification and Regression Trees (CART). We use Classification Trees when need to classify the targets (e.g. passenger survived or died) and Regression Trees when we need to predict continuous values like price of a house. In general, Decision Tree algorithms are referred to as **CART** or **Classification and Regression Trees**.
+## Decision trees <a id="dec_trees"></a>
+Nice overview: [Decision Tree Algorithm, Explained](https://www.kdnuggets.com/2020/01/decision-tree-algorithm-explained.html)
 
-In case of classification: Decision Trees use classified data to make recommendations based on a set of decision rules.
+The decision tree method is a powerful and popular predictive machine learning technique that is used for both **Classification** and **Regression**. 
 
-A decision tree is drawn upside down with its **root at the top**. In the image at the bottom, the text in black (gender, age, sibsp) represents a **condition/internal node**, based on which the tree splits into **branches/edges**. The end of the branch that doesn’t split anymore is the **decision/leaf**, in this case, whether the passenger died or survived, represented as red and green text, respectively.
+**Classification**:
+We use Classification Trees when need to classify the targets (e.g. passenger survived or died) 
+Decision Tree which has a categorical target variable then it called a **Categorical variable decision tree**.
 
-![image1]
+**Regression**:
+We use  Regression Trees when we need to predict continuous values like price of a house. 
+Decision Tree which has a continuous target variable then it is called **Continuous Variable Decision Tree**. 
 
-**Recursive Binary Splitting**:
-In this procedure all the features are considered and different split points are tried and tested using a cost function. The split with the best cost (or lowest cost) is selected.
+In general, Decision Tree algorithms are referred to as **CART** or **Classification and Regression Trees**.
 
-Titanic dataset: There are 3 features, and hence 3 candidate's splits:
+### Important Terminology related to Decision Trees
+1. **Root Node**: It represents the entire population or sample and this further gets divided into two or more homogeneous sets.
+2. **Splitting**: It is a process of dividing a node into two or more sub-nodes.
+3. **Decision Node**: When a sub-node splits into further sub-nodes, then it is called the decision node.
+4. **Leaf / Terminal Node**: Nodes do not split is called Leaf or Terminal node.
+5. **Pruning**: When we remove sub-nodes of a decision node, this process is called pruning. You can say the opposite process of splitting.
+6. **Branch / Sub-Tree**: A subsection of the entire tree is called branch or sub-tree.
+7. **Parent and Child Node**: A node, which is divided into sub-nodes is called a parent node of sub-nodes whereas sub-nodes are the child of a parent node. 
 
-- Calculate how much accuracy each split will cost
-- The split that costs least is chosen (here: sex of the passenger) 
-- Greedy algorithm: recursive algorithm, all input variables and all possible split points are evaluated and chosen in a greedy manner
-- Root node as best predictor/classifier.
+    ![image8]
 
-**Cost of a split**: For regression predictive modeling problems the cost function that is minimized to choose split points is the **sum squared error** or SSE across all training samples that fall within the rectangle
+Decision trees **classify the examples by sorting them down the tree** from the root to some leaf/terminal node, with the leaf/terminal node providing the classification of the example.
 
-    Regression : sum(Y — prediction)²
+**Each node in the tree acts as a test case for some attribute**, and each edge descending from the node corresponds to the possible answers to the test case. This process is recursive in nature and is repeated for every subtree rooted at the new node.
 
-where **Y** is the output for the training sample and **prediction** is the predicted output for the rectangle.    
+### How do Decision Trees work?
 
-For classification the Gini index function is used which provides an indication of how “pure” the leaf nodes are (how mixed the training data assigned to each node is).
+The decision of **making strategic splits** heavily affects a tree’s accuracy. The decision criteria are different for classification and regression trees.
 
-    Classification : G = sum(pk * (1 — pk))
+Decision trees use multiple algorithms to decide to split a node into two or more sub-nodes. The creation of sub-nodes increases the homogeneity of resultant sub-nodes. In other words, we can say that the purity of the node increases with respect to the target variable. The decision tree splits the nodes on all available variables and then selects the split which results in most homogeneous sub-nodes.
 
-where **G** is the **Gini index** over all classes, **pk** are the proportion of training instances with class k in the rectangle of interest. A node that has all classes of the same type (perfect class purity) will have G=0, whereas a G that has a 50-50 split of classes for a binary classification problem (worst purity) will have a G=0.5.
+### Important algorithm: ID3
+1. It begins with the original set **S** as the **root node**.
+2. On each iteration of the algorithm, it iterates through the very unused attribute of the set S and **calculates Entropy(H)** and **Information gain(IG)** of this attribute.
+3. It then selects the attribute which has the **smallest Entropy** or **largest Information gain**.
+4. The set **S** is then **split by the selected attribute** to produce a subset of the data.
+5. The algorithm continues to **recur** on each subset, considering only attributes never selected before. 
 
-**Stopping Criterion**: As a problem usually has a large set of features, it results in large number of splits, which in turn gives a huge tree. Such trees are complex and can lead to overfitting. So, we need to know when to stop. One way of doing this is to set a **minimum number of training inputs** to use on each leaf. For example, we can use a minimum of 10 passengers to reach a decision(died or survived), and ignore any leaf that takes less than 10 passengers. Another way is to set maximum depth of your model. Maximum depth refers to the length of the longest path from a root to a leaf.
+### Attribute Selection Measures 
+If the dataset consists of **N attributes** then deciding **which attribute to place at the root** or at different levels of the tree as internal nodes is a complicated step. By just randomly selecting any node to be the root can’t solve the issue. If we follow a **random approach**, it may give us **bad results** with low accuracy.
 
-**Pruning** The performance of a tree can be further increased by pruning. It involves removing the branches that make use of features having low importance. This way, we reduce the complexity of tree, and thus increasing its predictive power by reducing overfitting.
+For solving this attribute selection problem use some criteria like:
+- Entropy,
+- Information gain,
+- Gini index,
+- Gain Ratio, see [Decision Tree Algorithm, Explained](https://www.kdnuggets.com/2020/01/decision-tree-algorithm-explained.html)
+- Reduction in Variance, see [Decision Tree Algorithm, Explained](https://www.kdnuggets.com/2020/01/decision-tree-algorithm-explained.html)
+- Chi-Square, see [Decision Tree Algorithm, Explained](https://www.kdnuggets.com/2020/01/decision-tree-algorithm-explained.html)
 
-The fastest and simplest pruning method is to work through each leaf node in the tree and evaluate the effect of removing it using a hold-out test set. Leaf nodes are removed only if it results in a drop in the overall cost function on the entire test set. You stop removing nodes when no further improvements can be made.
+These criteria will **calculate values for every attribut**e**. The values are **sorted**, and attributes are placed in the tree by following the order i.e, the **attribute with a high value(in case of information gain) is placed at the root**.
+While using **Information Gain**as a criterion, we assume attributes to be **categorical**, and for the **Gini index**, attributes are assumed to be **continuous**.
 
-More sophisticated pruning methods can be used such as cost complexity pruning (also called weakest link pruning) where a learning parameter (alpha) is used to weigh whether nodes can be removed based on the size of the sub-tree.
+### Entropy
+Entropy is a **measure of the randomness** in the information being processed. **The higher the entropy the harder it is to draw any conclusions from that information**. Flipping a coin is an example of an action that provides information that is random.
 
-### Random Forest <a id="random_forest"></a>
+![image9]
+
+From the above graph, it is quite evident that the 
+- entropy **H(X) = 0** when the probability is either 0 or 1. 
+- entropy **H(X) = 1** when the probability is 0.5 because it projects perfect randomness in the data 
+
+**ID3 follows the rule — A branch with an entropy of zero is a leaf node and A brach with entropy more than zero needs further splitting**. 
+
+Mathematically Entropy for 1 attribute is represented as:
+
+![image10]
+
+- S → Current state
+- p<sub>i</sub> → Probability/percentage of an event/class i in a node of state S
+
+Mathematically Entropy for multiple attributes is represented as:
+
+![image12]
+- T → Current state
+- X → Selected attribute
+
+### Information Gain
+Information gain or IG is a statistical property that **measures how well a given attribute separates the training examples** according to their target classification. Constructing a **decision tree is all about finding an attribute that returns the highest information gain and the smallest entropy**.
+
+![image11]
+
+Information gain is a decrease in entropy. It computes the difference between **entropy before split and average entropy after split** of the dataset based **on given attribute values**. ID3 (Iterative Dichotomiser) decision tree algorithm uses information gain.
+
+Mathematically, IG is represented as:
+
+![image13]
+
+- before → the dataset before the split
+- K → number of subsets generated by the split
+- (j, after) → subset j after the split
+
+### Gini Index
+You can understand the Gini index as a **cost function used to evaluate splits in the dataset**. It is calculated by **subtracting the sum of the squared probabilities of each class from one**. It favors larger partitions and easy to implement whereas information gain favors smaller partitions with distinct values.
+
+![image14]
+
+Gini Index works with the categorical target variable “Success” or “Failure”. It performs only Binary splits.
+
+**Higher value of Gini index implies higher inequality, higher heterogeneity**. 
+
+Steps to Calculate Gini index for a split:
+- Calculate Gini for sub-nodes, using the above formula for success(p) and failure(q) (p²+q²).
+- Calculate the Gini index for split using the weighted Gini score of each node of that split. 
+
+CART (Classification and Regression Tree) uses the Gini index method to create split points.
+
+### How to avoid/counter Overfitting in Decision Trees?
+The common problem with Decision trees, especially having a table full of columns, they fit a lot. Sometimes it looks like the tree memorized the training data set. If there is no limit set on a decision tree, it will give you 100% accuracy on the training data set because in the worse case it will end up making 1 leaf for each observation. Thus this affects the accuracy when predicting samples that are not part of the training set.
+
+Here are two ways to remove overfitting:
+1. Pruning Decision Trees.
+2. Random Forest 
+
+### Pruning Decision Trees
+In pruning, you trim off the branches of the tree, i.e., remove the decision nodes starting from the leaf node such that the overall accuracy is not disturbed. This is done by segregating the actual training set into two sets: training data set, D and validation data set, V. Prepare the decision tree using the segregated training data set, D. Then continue trimming the tree accordingly to optimize the accuracy of the validation data set, V.
+
+![image15]
+
+### Example code
+- Libraries
+    ```
+    import numpy as np
+    import matplotlib.pyplot as plt 
+    import pandas as pd
+
+    # train test split
+    from sklearn.model_selection import train_test_split
+    
+    # feature scaling
+    from sklearn.preprocessing import StandardScaler
+
+    # DecisionTreeClassifier
+    from sklearn.tree import DecisionTreeClassifier
+
+    # For evaluation of accuracy
+    from sklearn import metrics
+
+    # confusion_matrix
+    from sklearn.metrics import confusion_matrix
+
+    # ListedColormap
+    from matplotlib.colors import ListedColormap
+
+    # For Tree visualization
+    from sklearn.tree import export_graphviz
+    from sklearn.externals.six import StringIO  
+    from IPython.display import Image  
+    import pydotplus
+    ```
+- Load the dataset. It consists of 5 features, UserID, Gender, Age, EstimatedSalary and Purchased.
+    ```
+    data = pd.read_csv('/Users/ML/DecisionTree/Social.csv')
+    data.head()
+    ```
+- Create feature columns, dependent and independent variables
+    ```
+    feature_cols = ['Age','EstimatedSalary']
+    X = data.iloc[:,[2,3]].values
+    y = data.iloc[:,4].values
+    ```
+- Train-Test-Split
+    ```
+    X_train, X_test, y_train, y_test =  train_test_split(X,y,test_size = 0.25, random_state= 0)
+    ```
+- Perform feature scaling
+    ```
+    sc_X = StandardScaler()
+    X_train = sc_X.fit_transform(X_train)
+    X_test = sc_X.transform(X_test)
+    ```
+- Fit the model in the Decision Tree classifier
+    ```
+    classifier = DecisionTreeClassifier()
+    classifier = classifier.fit(X_train,y_train)
+    ```
+- Make predictions
+    ```
+    y_pred = classifier.predict(X_test)
+    ```
+- Check accuracy
+    ```
+    print('Accuracy Score:', metrics.accuracy_score(y_test,y_pred))
+
+    RESULTS:
+    ------------
+    The decision tree classifier gave an accuracy of 91%.
+    ```
+- Confusion Matrix
+    ```
+    cm = confusion_matrix(y_test, y_pred)
+    
+    RESULTS:
+    ------------
+
+    array([[64,  4],
+       [ 2, 30]])
+
+    It means 6 observations have been classified as false.
+    ```
+- Let us first visualize the model prediction results.
+    ```
+    X_set, y_set = X_test, y_test
+    X1, X2 = np.meshgrid(np.arange(start = X_set[:,0].min()-1, stop= X_set[:,0].max()+1, step = 0.01),np.arange(start = X_set[:,1].min()-1, stop= X_set[:,1].max()+1, step = 0.01))
+    plt.contourf(X1,X2, classifier.predict(np.array([X1.ravel(), X2.ravel()]).T).reshape(X1.shape)alpha=0.75, cmap = ListedColormap(("red","green")))
+    plt.xlim(X1.min(), X1.max())
+    plt.ylim(X2.min(), X2.max())for i,j in enumerate(np.unique(y_set)):
+        plt.scatter(X_set[y_set==j,0],X_set[y_set==j,1], c = ListedColormap(("red","green"))(i),label = j)
+    plt.title("Decision Tree(Test set)")
+    plt.xlabel("Age")
+    plt.ylabel("Estimated Salary")
+    plt.legend()
+    plt.show()
+    ```
+    ![image16]
+- Let us also visualize the tree:
+    ```
+    dot_data = StringIO()
+    export_graphviz(classifier, out_file=dot_data,  
+                filled=True, rounded=True,
+                special_characters=True,feature_names = feature_cols,class_names=['0','1'])
+    graph = pydotplus.graph_from_dot_data(dot_data.getvalue())  
+    Image(graph.create_png())
+    ```
+    ![image17]
+- Optimizing the Decision Tree Classifier
+    - **criterion**: optional (default=”gini”) or Choose attribute selection measure: This parameter allows us to use the different-different attribute selection measure. Supported criteria are “gini” for the Gini index and “entropy” for the information gain.
+    - **splitter**: string, optional (default=”best”) or Split Strategy: This parameter allows us to choose the split strategy. Supported strategies are “best” to choose the best split and “random” to choose the best random split.
+    - **max_depth**: int or None, optional (default=None) or Maximum Depth of a Tree: The maximum depth of the tree. If None, then nodes are expanded until all the leaves contain less than min_samples_split samples. The higher value of maximum depth causes overfitting, and a lower value causes underfitting (Source).
+    ```
+    # Create Decision Tree classifer object
+    classifier = DecisionTreeClassifier(criterion="entropy", max_depth=3) 
+
+    # Train Decision Tree Classifer
+    classifier = classifier.fit(X_train,y_train)
+
+    #Predict the response for test dataset
+    y_pred = classifier.predict(X_test)
+
+    # Model Accuracy, how often is the classifier correct?
+    print("Accuracy:",metrics.accuracy_score(y_test, y_pred))
+
+    RESULTS:
+    ------------
+    The classification rate increased to 94%.
+    ```
+- Visualize the **pruned** Decision Tree
+    ```
+    dot_data = StringIO()
+    export_graphviz(classifier, out_file=dot_data,  
+                    filled=True, rounded=True,
+                    special_characters=True, feature_names = feature_cols,class_names=['0','1'])
+    graph = pydotplus.graph_from_dot_data(dot_data.getvalue())  
+    Image(graph.create_png())
+    ```
+    ![image18]
+
+    This pruned model is less complex, explainable, and easy to understand than the previous decision tree model plot.
+
+
+## Random Forest <a id="random_forest"></a>
 Decision Trees (classification or regression) are the building blocks of the random forest model.
+
+Two key concepts that give it the name random:
+1. A random sampling of training data set when building trees.
+2. Random subsets of features considered when splitting nodes. 
 
 Random forest, like its name implies, consists of a large number of individual Decision Trees that operate as an ensemble. Each individual tree in the random forest spits out a class prediction and the class with the most votes becomes our model’s prediction (see figure below).
 
@@ -228,7 +470,7 @@ The reason for this effect is that the trees protect each other from their indiv
 1. We need **features that have at least some predictive power** so that models built using those features do better than random guessing.
 2. The predictions (and therefore the errors) made by the individual trees need to have **low correlations** with each other.
 
-### Instance-based algorithms <a id="instance_based"></a>
+## Instance-based algorithms <a id="instance_based"></a>
 A good example of an instance-based algorithm is **K-Nearest Neighbor** or **KNN**. KNN algorithm is a simple algorithm that can be used to solve both classification and regression problems. The KNN algorithm assumes that similar things exist in proximity. 
 
 ![image5]
@@ -250,7 +492,7 @@ The straight-line distance - **Euclidean distance** - is a popular and familiar 
 7. If **regression**, return the **mean of the K labels**
 8. If **classification**, return the **mode of the K labels**
 
-### Naive Bayes <a id="naive_bayes"></a>
+## Naive Bayes <a id="naive_bayes"></a>
 A Naive Bayes classifier is a probabilistic machine learning model that’s used for classification task. It adopts the principle of class conditional independence from the Bayes Theorem. 
 
 Bayes Theorem:
@@ -279,19 +521,19 @@ In the actualcase of ***playing golf***, the class variable **Y** has only two o
 <img src="https://render.githubusercontent.com/render/math?math=Y = argmax(P(Y|x1,x2,...xn))" width="350px">
 
 
-### Neural networks <a id="neural_net"></a>
+## Neural networks <a id="neural_net"></a>
 Primarily leveraged for **deep learning** algorithms, neural networks process training data by mimicking the interconnectivity of the human brain through layers of nodes. Each node is made up of inputs, weights, a bias (or threshold), and an output. If that output value exceeds a given threshold, it “fires” or activates the node, passing data to the next layer in the network. Neural networks learn this mapping function through supervised learning, adjusting based on the loss function through the process of gradient descent. When the cost function is at or near zero, we can be confident in the model’s accuracy to yield the correct answer.
 
 ![image6]
 
-### Unsupervised Learning <a id="usl"></a>
+## Unsupervised Learning <a id="usl"></a>
 
 Algorithms for use with **unlabeled data** include the following:
 
-### Clustering algorithms <a id="clustering"></a>
+## Clustering algorithms <a id="clustering"></a>
 Think of clusters as groups. Clustering focuses on **identifying groups of similar records** and labeling the records according to the group to which they belong. This is done **without prior knowledge** about the groups and their characteristics. In other words, we try to find **homogeneous subgroups** within the data such that data points in each cluster are as similar as possible according to a similarity measure such as **euclidean-based distance** or **correlation-based distance**. The decision of which similarity measure to use is application-specific. Types of clustering algorithms include the K-means, TwoStep, and Kohonen clustering.
 
-### K-means <a id="k_means"></a>
+## K-means <a id="k_means"></a>
 
 The way K-means algorithm works is as follows:
 
@@ -305,7 +547,7 @@ The way K-means algorithm works is as follows:
 The approach K-means follows to solve the problem is called Expectation-Maximization. The E-step is assigning the data points to the closest cluster. The M-step is computing the centroid of each cluster. 
 
 
-### Association algorithms <a id="asso_algo"></a>
+## Association algorithms <a id="asso_algo"></a>
 Association algorithms find patterns and relationships in data and identify frequent ‘if-then’ relationships called association rules. These are similar to the rules used in data mining.
 
 ## Step 3: Training the algorithm to create the model <a id="training"></a>
@@ -317,14 +559,14 @@ Training the algorithm is an iterative process–it involves running variables t
 The final step is to use the model with new data and, in the best case, for it to improve in accuracy and effectiveness over time. From where the new data comes from will depend on the problem being solved. For example, a machine learning model designed to identify spam will ingest email messages, whereas a machine learning model that drives a robot vacuum cleaner will ingest data resulting from real-world interaction with moved furniture or new objects in the room.
 
 
-## Setup Instructions <a id="Setup_Instructions"></a>
+# Setup Instructions <a id="Setup_Instructions"></a>
 The following is a brief set of instructions on setting up a cloned repository.
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 
 
-### Prerequisites: Installation of Python via Anaconda and Command Line Interface <a id="Prerequisites"></a>
+## Prerequisites: Installation of Python via Anaconda and Command Line Interface <a id="Prerequisites"></a>
 - Install [Anaconda](https://www.anaconda.com/distribution/). Install Python 3.7 - 64 Bit
 
 - Upgrade Anaconda via
@@ -338,7 +580,7 @@ $ conda upgrade --all
 $ export PATH="/path/to/anaconda/bin:$PATH"
 ```
 
-### Clone the project <a id="Clone_the_project"></a>
+## Clone the project <a id="Clone_the_project"></a>
 - Open your Command Line Interface
 - Change Directory to your project older, e.g. `cd my_github_projects`
 - Clone the Github Project inside this folder with Git Bash (Terminal) via:
@@ -373,10 +615,10 @@ pyspark
 $ conda env list
 ```
 
-## Acknowledgments <a id="Acknowledgments"></a>
+# Acknowledgments <a id="Acknowledgments"></a>
 * This project is part of the Udacity Nanodegree program 'Data Science'. Please check this [link](https://www.udacity.com) for more information.
 
-## Further Links <a id="Further_Links"></a>
+# Further Links <a id="Further_Links"></a>
 Machine Learning
 * [Machine Learning - IBM](https://www.ibm.com/cloud/learn/machine-learning)
 * [Supervised Learning - IBM](https://www.ibm.com/cloud/learn/supervised-learning)
