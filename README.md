@@ -16,6 +16,15 @@
 [image16]: assets/16.png 
 [image17]: assets/17.png 
 [image18]: assets/18.png 
+[image19]: assets/19.png 
+[image20]: assets/20.png 
+[image21]: assets/21.png 
+[image22]: assets/22.png 
+[image23]: assets/23.png 
+[image24]: assets/24.png 
+[image25]: assets/25.png 
+[image26]: assets/26.png 
+[image27]: assets/27.png 
 
 
 
@@ -303,6 +312,26 @@ The common problem with Decision trees, especially having a table full of column
 Here are two ways to remove overfitting:
 1. Pruning Decision Trees.
 2. Random Forest 
+
+
+### Inductive Bias
+The [inductive bias](https://en.wikipedia.org/wiki/Inductive_bias) (also known as learning bias) of a learning algorithm is the set of assumptions that the learner uses to predict outputs of given inputs that it has not encountered. 
+
+Inductive Bias in ID3:
+    - Good Splits at thee top
+    - Correct over incorrect (ID3 prefers splits that model the data better than splits that model the data worse)
+    - Shorter Trees are preferred
+
+### Continuous Attributes
+For example age --> **create ranges**
+
+![image19]
+
+### When should we stop training (ID3)?
+Answers: 
+    - When everything is classified correctly.
+    - No more attributes!
+    - No overfitting!
 
 ### Pruning Decision Trees
 In pruning, you trim off the branches of the tree, i.e., remove the decision nodes starting from the leaf node such that the overall accuracy is not disturbed. This is done by segregating the actual training set into two sets: training data set, D and validation data set, V. Prepare the decision tree using the segregated training data set, D. Then continue trimming the tree accordingly to optimize the accuracy of the validation data set, V.
