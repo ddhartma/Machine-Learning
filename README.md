@@ -500,6 +500,15 @@ The reason for this effect is that the trees protect each other from their indiv
 2. The predictions (and therefore the errors) made by the individual trees need to have **low correlations** with each other.
 
 ## Instance-based algorithms <a id="instance_based"></a>
+- Decision trees, regression, neural networks, SVMs, Bayes nets: all of these can be described as **eager learners**. We fit a function that best fits our training data.
+- Here, we look at an example of a **​lazy learner** in the ​k​­nearest neighbor salgorithm. In contrast to eager learners, lazy learners do not compute a function to fit the training data before new data is received. Instead, new instances are compared to the training data itself to make a classification or regression judgment. Essentially, the data itself is the function to which new instances are fit.
+
+![image20]
+
+Instead of creating a function (function approximation) we create a lookup table for data points (like a database). However, how can we implement **generalization** and insert interpolation between database data points?
+
+--> **Nearest Neighbour** 
+
 A good example of an instance-based algorithm is **K-Nearest Neighbor** or **KNN**. KNN algorithm is a simple algorithm that can be used to solve both classification and regression problems. The KNN algorithm assumes that similar things exist in proximity. 
 
 ![image5]
@@ -520,6 +529,19 @@ The straight-line distance - **Euclidean distance** - is a popular and familiar 
 6. **Get the labels** of the selected K entries
 7. If **regression**, return the **mean of the K labels**
 8. If **classification**, return the **mode of the K labels**
+
+### Bias in KNN
+- **Locality** --> Near points are similar
+- **Smoothness** --> Averaging
+- **All features matters equaly**
+
+### Cause of Dimensionality
+As the number of Features or Dimensions grow, the amount of data we need to generalize accurately grows exponentially.
+
+![image21]
+
+Here: Number of data points increases with **5<sup>d</sup>**
+
 
 ## Naive Bayes <a id="naive_bayes"></a>
 A Naive Bayes classifier is a probabilistic machine learning model that’s used for classification task. It adopts the principle of class conditional independence from the Bayes Theorem. 
