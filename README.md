@@ -25,7 +25,19 @@
 [image25]: assets/25.png 
 [image26]: assets/26.png 
 [image27]: assets/27.png 
-
+[image28]: assets/28.png 
+[image29]: assets/29.png 
+[image30]: assets/30.png 
+[image31]: assets/31.png 
+[image32]: assets/32.png 
+[image33]: assets/33.png 
+[image34]: assets/34.png 
+[image35]: assets/35.png 
+[image36]: assets/36.png 
+[image37]: assets/37.png 
+[image38]: assets/38.png 
+[image39]: assets/39.png 
+[image40]: assets/40.png 
 
 
 # Machine Learning Concepts
@@ -43,6 +55,7 @@ In this repo a short overview of important Machine Learning algorithms is provid
         - [Decision trees](#dec_trees)
         - [Random Forest](#random_forest)
         - [Instance-based algorithms -KNN](#instance_based)
+        - [Ensemle Learning - Boosting](#ensemble)
         - [Naive Bayes](#naive_bayes)
         - [Neural networks](#neural_net)
     - [Unsupervised Learning](#usl)
@@ -541,6 +554,80 @@ As the number of Features or Dimensions grow, the amount of data we need to gene
 ![image21]
 
 Here: Number of data points increases with **5<sup>d</sup>**
+
+## Ensemle Learning - Boosting <a id="ensemble"></a> 
+**Famous example: AdaBoost** - The AdaBoost algorithm trains multiple weak classifiers on training data, and then combines those weak classifiers into a  single boosted classifier. The combination is done through a weighted sum of the weak classifiers with weights dependent on the weak classifier accuracy.
+
+Interseting overview: [Ensemle Learning](http://www.scholarpedia.org/article/Ensemble_learning)
+
+![image22]
+
+An Example:
+
+![image23]
+
+![image24]
+
+### Weak Learner
+- Does better than random guessing,
+- Error **P<sub>D</sub>[h(x) ≠ c(x)] ≤ 1/2** (The probability for a distribution where the hypothesis is incrorrect for a given data point and class label)
+
+### Boosting:
+- Training set **{(x<sub>i</sub>, y<sub>i</sub>)}**
+    - **x<sub>i</sub>** = a vector that in general may contain multiple features
+    - **y<sub>i</sub>** = **{-1, +1}** --> classification label
+- **w<sub>i</sub>** = importance weight that (how important is the example for the current learning task). It is often domain knowledge. One advantage of using importance weights is that we can generalize the notion of error to take into account those weights.Let’s say we have a classifier **G** that takes input features **x<sub>i</sub>** and produces a prediction **G(x<sub>i</sub>)** ∈ **{-1, +1}**.
+    We can measure its training error by simply counting all the misclassified training examples:
+
+    ![image25]
+
+    - The function I will return **1** whenever the true label **y<sub>i</sub>** does not agree with the classification prediction **G(x<sub>i</sub>)** and **0** when they do agree. A better way to compute the error is to take advantage of the importance weight:
+
+    ![image26]
+
+    - Here we multiply each misclassification by the importance weight **w<sub>i</sub>**. In this way, our error metric is more sensitive to misclassified examples that have a greater importance weight. Even if we get many examples wrong, we may still get a low error rate, because in a sense some examples are more important than others.
+
+    - The factor in the denominator **∑wi** is simply a normalization factor, ensure that the error is normalized (between 0 and N) in case some of the weights become very large. In the boosting algorithm, the importance weights **w<sub>i</sub>** are sequentially updated by the algorithm itself. Here is an outline of the algorithm­ we are going to go through it step by step:
+
+### Boosting in Pseudo-code:
+
+1. Initialize the importance weights **w<sub>i</sub> = 1/N** for all training examples **i**.
+2. For m = 1 to M:
+    - Fit a classifier **G<sub>m</sub>(x)** to the training data using the weights **w<sub>i</sub>**. 
+    - Compute the error
+
+        ![image27]
+    
+    - Compute the alpha parameter:
+
+        ![image28]
+
+        for **i = 1,2, .. N**
+
+        The parameter **&alpha;<sub>m</sub>** is therefore telling us how well the classifier **G<sub>m</sub>** performs on training data -  ­large **&alpha;<sub>m</sub>** implies low error and therefore accurate performance.
+
+    - Update weights:
+
+        ![image29]
+
+        The last step inside the loop is to update the importance weights **w<sub>i</sub>**. The old weight is multiplied by an exponential  term that depends on both **&alpha;<sub>m</sub>** and whether the classifier was correct at predicting the training example **i**  corresponding to the importance weight **w<sub>i</sub>**. Suppose that a training example **j** is difficult to classify - ­i.e. a classifier **G<sub>m</sub>** fails to classify **j** correctly meaning 
+
+        ![image31]
+
+
+        As a result, the importance weight of **j** will increase:
+        
+        ![image32]
+
+        Then the next classifier **G<sub>m+1</sub>** will “pay more attention” to example **j** during classification Gm+1 training, since **j** now has a greater weight. The opposite holds for examples that were correctly classified in the previous iteration - ­future classifiers will have a lower priority of correctly classifying such examples.
+
+3. Return
+
+    ![image30]
+
+    Finally, we combine all classifiers **G<sub>m</sub>** for m = 1...M into a single boosted classifier **G** by doing a weighted sum on the weights. In this way, classifiers that have a poor accuracy (high error rate, low **&alpha;<sub>m</sub>**) are penalized in the final sum.
+
+
 
 
 ## Naive Bayes <a id="naive_bayes"></a>
