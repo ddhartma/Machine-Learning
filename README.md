@@ -548,17 +548,23 @@ The straight-line distance - **Euclidean distance** - is a popular and familiar 
 - **Smoothness** --> Averaging
 - **All features matters equaly**
 
-### Cause of Dimensionality
+### Curse of Dimensionality
 As the number of Features or Dimensions grow, the amount of data we need to generalize accurately grows exponentially.
 
 ![image21]
 
 Here: Number of data points increases with **5<sup>d</sup>**
 
-## Ensemle Learning - Boosting <a id="ensemble"></a> 
+## Ensemle Learning <a id="ensemble"></a> 
 **Famous example: AdaBoost** - The AdaBoost algorithm trains multiple weak classifiers on training data, and then combines those weak classifiers into a  single boosted classifier. The combination is done through a weighted sum of the weak classifiers with weights dependent on the weak classifier accuracy.
 
 Interseting overview: [Ensemle Learning](http://www.scholarpedia.org/article/Ensemble_learning)
+
+### Weak Learner
+- Does better than random guessing,
+- Error **P<sub>D</sub>[h(x) ≠ c(x)] ≤ 1/2** (The probability for a distribution where the hypothesis is incrorrect for a given data point and class label)
+
+### Bagging:
 
 ![image22]
 
@@ -566,13 +572,10 @@ An Example:
 
 ![image23]
 
+### Boosting:
+
 ![image24]
 
-### Weak Learner
-- Does better than random guessing,
-- Error **P<sub>D</sub>[h(x) ≠ c(x)] ≤ 1/2** (The probability for a distribution where the hypothesis is incrorrect for a given data point and class label)
-
-### Boosting:
 - Training set **{(x<sub>i</sub>, y<sub>i</sub>)}**
     - **x<sub>i</sub>** = a vector that in general may contain multiple features
     - **y<sub>i</sub>** = **{-1, +1}** --> classification label
