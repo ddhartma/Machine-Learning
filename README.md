@@ -624,11 +624,14 @@ An Example:
 
         Then the next classifier **G<sub>m+1</sub>** will “pay more attention” to example **j** during classification Gm+1 training, since **j** now has a greater weight. The opposite holds for examples that were correctly classified in the previous iteration - ­future classifiers will have a lower priority of correctly classifying such examples.
 
+
 3. Return
 
     ![image30]
 
     Finally, we combine all classifiers **G<sub>m</sub>** for m = 1...M into a single boosted classifier **G** by doing a weighted sum on the weights. In this way, classifiers that have a poor accuracy (high error rate, low **&alpha;<sub>m</sub>**) are penalized in the final sum.
+
+![image33]
 
 
 
