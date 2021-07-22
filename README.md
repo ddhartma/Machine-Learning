@@ -167,46 +167,104 @@ Note that, the probability can be calculated from the odds as
 <img src="https://render.githubusercontent.com/render/math?math=p = Odds/(1 %2B Odds)" width="220px">
 
 ## Support vector machine <a id="svm"></a>
-A support vector machine is a popular supervised learning model used for both classification and regression. That said, it is typically leveraged for classification problems, constructing a hyperplane where the distance between two classes of data points is at its maximum.
-
+A support vector machine is a popular supervised learning model used for both classification and regression. That said, it is typically leveraged for classification problems, constructing a hyperplane where the **distance between two classes of data points is at its maximum**.
 
 There are a few important parameters of SVM:
 
 **Kernel**: A kernel helps us find a hyperplane in the higher dimensional space without increasing the computational cost. Usually, the computational cost will increase if the dimension of the data increases. This increase in dimension is required when we are unable to find a separating hyperplane in a given dimension and are required to move in a higher dimension:
 
-![image3]
+![image3] ![image4]
 
 **Hyperplane**: This is basically a separating line between two data classes in SVM. But in Support Vector Regression, this is the line that will be used to predict the continuous output.
 
 **Decision Boundary**: A decision boundary can be thought of as a demarcation line (for simplification) on one side of which lie positive examples and on the other side lie the negative examples. On this very line, the examples may be classified as either positive or negative. This same concept of SVM will be applied both in Support Vector Regression and Classification.
 
+**How does it look like for classification?**
+- Example binary problem: 2 classes for each of the data points **x<sub>i</sub>** as being­ **-1** or **1**, i.e. **y<sub>i</sub> ∈ {­-1, 1}**.
+- Hyperplane function has the equation **w<sup>T</sup> x + b** and is defined such that for all points that have a class 
+    - **y<sub>i</sub> = ­-1**:
+
+        <img src="https://render.githubusercontent.com/render/math?math=w^Tx %2B b \leq -1" width="130px">
+
+    - **y<sub>i</sub> = ­1**:
+
+        <img src="https://render.githubusercontent.com/render/math?math=w^Tx %2B b \geq 1" width="130px">
+
+- In the training data there should be no points between the boundaries **w<sup>T</sup> x + b = -1** and **w<sup>T</sup> x + b = 1**. A region called **margin**.  
+- The dividing plane is the hyperplane function **w<sup>T</sup> x + b = 0**.
+- We classify new points by their function 
+
+    <img src="https://render.githubusercontent.com/render/math?math=\hat{y}_i = sign(w^Tx %2B b)" width="200px">
+
+    ![image34]
+
+- **Goal**: Maximize size of the margin!
+    - Find points which lie on opposite margins and are as close as possible to one another, i.e. **x<sub>+</sub>** and **x<sub>-</sub>** 
+    - These points define 
+        - **w<sup>T</sup> x<sub>+</sub> + b = 1** and
+        - **w<sup>T</sup> x<sub>-</sub> + b = -1**
+    - Subtract the two equations 
+        - **w<sup>T</sup>(x<sub>+</sub> - x<sub>-</sub>) = 2**
+    - Size of the margin: As vector **w** and vector **x<sub>+</sub> - x<sub>-</sub>** are parallel:
+        - **||x<sub>+</sub> - x<sub>-</sub>|| = 2/ ||w||**
+    - Maximizing the size of the margin **2/ ||w||** is equivalent to finding the minimum of **||w||** resulting in:
+        - **y<sub>i</sub>(w<sup>T</sup> x<sub>+</sub> + b) ≥ 1**
+    - Technically, minimizing **||w||** is the same as minimizing **1/2||w||<sup>2</sup>** an we can use [Lagrange multiplier](https://en.wikipedia.org/wiki/Lagrange_multiplier) to solve this task.
+    - All points satisfying the equation **y<sub>i</sub>(w<sup>T</sup> x<sub>+</sub> + b) ≥ 1** are **support vectors** for the model.
+
+    ![image36]
+
+- The process above for linearly separable data (**hard-margin SVMs**) 
+    - In case of mostly linearly separable data, we can consider using **soft­-margin SVMs**.
+    - In case of really non-lineary separable data, we can use **kernel functions**, to be able to capture a nonlinear dividing curve between classes.
+
+### Soft­-margin SVMs
+- Data does not need to be completely linearly separable. It allows to classify some points incorrectly. 
+- We provide for each point a non-negative slack variable **ξ<sub>i</sub>**, that illustrates to what degree each point is misclassified    
+    - **y<sub>i</sub>(w<sup>T</sup> x<sub>+</sub> + b) ≥ 1 - ξ<sub>i</sub>**
+- If a point is classified correctly than
+    - **ξ<sub>i</sub> = 0**
+- If a point is misclassified than 
+    - **ξ<sub>i</sub> > 0**
+- **Goal**: Minimize
+    - **1/2||w||<sup>2</sup> + C∑ξ<sub>i</sub>**
+    - C is a regularization parameter (with smaller C we punish errors less --> thus increase the size of the margin)
+    - For C --> infinity we implement a hard punishment resulting in hard-margin SVM again.
+
+### Kernel functions
+- Used for data which is only non-linearly separable.
+- The kernel function should capture some aspect of similarity in the data.
+- It also represents domain knowledge regarding the structure of the data.
+- In general we can write the Lagrange multiplier function we want to maximize as
+
+    ![image35]
+
+    - **k(x<sub>i</sub>, x<sub>j</sub>) = x<sub>i</sub><sup>T</sup>x<sub>j</sub>** --> dividing hyperplane
+    - **k(x<sub>i</sub>, x<sub>j</sub>) = (x<sub>i</sub><sup>T</sup>x<sub>j</sub>)<sup>2</sup>** --> dividing hypersphere
+    - **k(x<sub>i</sub>, x<sub>j</sub>) = (x<sub>i</sub><sup>T</sup>x<sub>j</sub> + C)<sup>d</sup>** --> general form for **polynomial kernels**
+
+    ![image37]
+
+- It is important to note that natural task of SVMs lies in binary classification.
+- For classification tasks involving more than two groups, use multiple binary classifiers
+    - we may create one classifier for each class in a one­ versus ­all fashion or
+    - set up classifiers in a paiwise comparison and select the class ,wich wins the most pairwise matchups
+
 **How does it look like for regression?**
-The problem of regression is to find a function that approximates mapping **from an input domain to real numbers** on the basis of a training sample. 
+- As with **SVMs** we project data in an **SVR** task using a kernel function so that they can be fit by a hyperplane. Instead of dividing the data into classes, however, the hyperplane now provides an estimate for the data’s output value.
+- In addition the margin and error are treated differently. A parameter ε is specified  such that small deviations from the regression hyperplane do not contribute to error costs, i.e. when we attempt to minimize
+    - **1/2||w||<sup>2</sup> + C∑ξ<sub>i</sub>**
 
-![image4]
+- Essentially, SVR operates in much the same way as SVM does.
+- For each point in the training data, we instead have two slack variables, **ξ<sub>i</sub>** and **ξ<sub>i</sub><sup>'</sup>**, one for positive deviations and one for negative deviations fromt he regression hyperplane. This results in two Lagrangian multipliers associated with each point
+    - **0 ≤ α<sub>i</sub>, α<sub>i</sub><sup>'</sup> ≤ C** 
+    
+    and a respecified constraint on weight values 
+    - **∑(α<sub>i</sub> − α<sub>i</sub><sup>'</sup>) = 0** 
 
-Consider these two red lines as the ***decision boundary*** and the green line as the hyperplane. Our objective, when we are moving on with SVR, is to basically consider the points that are within the decision boundary line. Our ***best fit line is the hyperplane*** that has a maximum number of points.
+    When solved, the regression function takes the form
 
-The first thing that we’ll understand is what is the decision boundary (the danger red line above!). Consider these lines as being at any distance, say ‘a’, from the hyperplane. So, these are the lines that we draw at distance ‘+a’ and ‘-a’ from the hyperplane. This ‘a’ in the text is basically referred to as epsilon.
-
-The **equation of the hyperplane**:
-
-<img src="https://render.githubusercontent.com/render/math?math=Y = wx %2B b " width="130px">
-
-The **equation of decision boundary**:
-
-<img src="https://render.githubusercontent.com/render/math?math=wx %2B b = %2B a" width="130px">
-
-and
-
-<img src="https://render.githubusercontent.com/render/math?math=wx %2B b = -a" width="130px">
-
-Thus, any hyperplane that satisfies our SVR should satisfy:
-
-<img src="https://render.githubusercontent.com/render/math?math=-a < Y- wx %2B b < %2B a" width="220px">
-
-Hence, we are going to take only those points that are within the decision boundary and have the least error rate.
-
+    - **∑(α<sub>i</sub> − α<sub>i</sub><sup>'</sup>)k(x<sub>i</sub><sup>T</sup>x) + b**
 
 ## Decision trees <a id="dec_trees"></a>
 Nice overview: [Decision Tree Algorithm, Explained](https://www.kdnuggets.com/2020/01/decision-tree-algorithm-explained.html)
@@ -633,7 +691,9 @@ An Example:
 
 ![image33]
 
+- Adding more weak learners error stays the same but confidence (margin see SVM) increases.
 
+![image38]
 
 
 ## Naive Bayes <a id="naive_bayes"></a>
