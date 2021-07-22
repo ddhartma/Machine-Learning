@@ -38,6 +38,15 @@
 [image38]: assets/38.png 
 [image39]: assets/39.png 
 [image40]: assets/40.png 
+[image41]: assets/41.png 
+[image42]: assets/42.png 
+[image43]: assets/43.png 
+[image44]: assets/44.png 
+[image45]: assets/45.png 
+[image46]: assets/46.png 
+[image47]: assets/47.png 
+[image48]: assets/48.png 
+[image49]: assets/49.png 
 
 
 # Machine Learning Concepts
@@ -55,7 +64,8 @@ In this repo a short overview of important Machine Learning algorithms is provid
         - [Decision trees](#dec_trees)
         - [Random Forest](#random_forest)
         - [Instance-based algorithms -KNN](#instance_based)
-        - [Ensemle Learning - Boosting](#ensemble)
+        - [Ensemle Learning](#ensemble)
+        - [Computational Learning Theory](#comp_learn_theo)
         - [Naive Bayes](#naive_bayes)
         - [Neural networks](#neural_net)
     - [Unsupervised Learning](#usl)
@@ -695,6 +705,90 @@ An Example:
 
 ![image38]
 
+## Computational Learning Theory <a id="comp_learn_theo"></a> 
+A formal way of 
+- defining learning problems
+- showing specific algorithms work
+- show these problems are fundamentally hard (cannot be solved by the chosen algorithm)
+
+### Resources in Machine Learning
+Theory of computing analyzes how algorithms use resources
+- time: O(nlogn)
+- space: O(n<sup>2</sup>)
+- samples (data)
+
+### Inductive Learning
+Learning from examples. Some terminologies
+1. Probability of successful training, **1- &delta;** (maybe failure due to noisy data)
+2. Number of examples to train on, **m**
+3. Complexity of hypothesis class, **complexity of H** (maybe more data needed to nail things down)
+4. Accuracy to which target concept is approximated, **&epsilon;**
+5. Manner in which training examples are presented, **batch** or **online**
+6. Manner in which training examples are selected
+
+### Selecting training examples
+Learner / Teacher
+1. Learner asks questions of teacher (like: **learner** provides input X, teacher answers with C(X)?)
+2. Teacher gives examples to help learner (like: **teacher** choses X and tells C(X))
+3. Fixed distribution (X chosen from D by **nature**).
+4. Evil-worst distribution
+
+### How many questions to ask before nailing down the right answer in case of
+- teacher: **only 1** (teacher knows the answer, he can ask the 'nailing' quaestion)
+- learner: **log<sub>2</sub>|H|**, tries to split with each question the training set into half (because the learner does not no the answer), (H: set of possibilities)
+
+### Some definitions
+**Computational complexity**:
+How much computational effort is needed for a learner to converge?
+
+**Sample complexity - batch**: 
+How many training examples are needed for a learner to create a successful hypothesis?
+
+**Mistake bounds - online**:
+How many missclassifications can a learner make over an inifinite run?
+
+**Version Spaces**
+- **Training set**: S ⊆ X --> class c(x) ∀ x∈S
+- **True hypothesis**: c ∈ H
+- **candidate hypothesis**: h ∈ H
+- **consistent learner**: produces c(x) = h(x) for x∈S
+- **version space**: VS(S) = {h s.t. h∈H consistent wrt S}
+
+    ![image40]
+
+### PAC Learning (Probably Approximately Correct)
+What is the error of a hypothesis?
+There are two errors:
+
+- **Training error**: fraction of training examples misclassified by h.
+- **True error**: fraction of examples that would be misclassified on sample drawn from D.
+
+    - error<sub>D</sub>(h) = P<sub>x from D</sub>[c(x) ≠ h(x)]
+
+### Definitions
+- c: concept class
+- L: Learner
+- H: Hypothesis space
+- n: |H|, size of hypothesis space
+- D: distribution over inputs
+- O ≤ &epsilon; ≤ 1/2 error goal
+- O ≤ &delta; ≤ 1/2 certainty goal
+
+### Rule
+C is PAC-learnable by learning algorithm L using H if (only if) learner L will, with probability 1-&delta;, output a hypothesis h∈H such that error<sub>D</sub>(h)≤&epsilon; in time and samples polynomial in 1/&epsilon;, 1/&delta; & n.
+
+### &epsilon;-exhausted version space
+- VS(S) &epsilon;-exhausted iff (if and only if) ∀ h∈VS(S) error<sub>D</sub>(h)≤&epsilon;
+
+![image41]
+
+### Haussler Theorem - Bound True Error
+
+![image42]
+
+![image43]
+
+![image44]
 
 ## Naive Bayes <a id="naive_bayes"></a>
 A Naive Bayes classifier is a probabilistic machine learning model that’s used for classification task. It adopts the principle of class conditional independence from the Bayes Theorem. 
