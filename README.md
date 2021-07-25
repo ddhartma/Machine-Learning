@@ -258,13 +258,35 @@ Once, the beta coefficients are calculated, a **t-test** is performed to check w
 
     <img src="https://render.githubusercontent.com/render/math?math=SSR= \sum_{i=1}^{n} (y_i - \hat{y_i})^2 = \sum_{i=1}^{n} e_i" width="300px">
 
+- The regression sum of squares, also called the **explained sum of squares (SSE)**:
+
+    <img src="https://render.githubusercontent.com/render/math?math=SSE= \sum_{i=1}^{n} (\hat{y_i} - \bar{y})^2 = \sum_{i=1}^{n} e_i" width="300px">
+
+- In a simple linear regression, the **total sum of squares** equals the sum of the two other sums of squares defined above:
+
+    <img src="https://render.githubusercontent.com/render/math?math=SST = SSR %2B SSE" width="200px">
+
+   
+
 - The most general definition of is **R<sup>2</sup>**:
 
     <img src="https://render.githubusercontent.com/render/math?math=R^2= 1- \frac{SSR}{SST}" width="170px">
 
 - In the **best case** R<sup>2</sup>=1), the **modeled values** exactly match the **observed values**, which results in **SSR = 0** and **R<sup>2</sup> = 1**. 
 - A **baseline model** (R<sup>2</sup>=0), which always predicts **ȳ**, will have **R<sup>2</sup> = 0**. 
-- Models that have worse predictions than this baseline will have a negative R<sup>2</sup>, i.e. **R<sup>2</sup> < 0**
+- Models that have worse predictions than this baseline will have a negative R<sup>2</sup>, i.e. **R<sup>2</sup> < 0**.
+
+### Adjusted R<sup>2</sup>
+**Adjusted R<sup>2</sup>** is an attempt to account for the phenomenon of the R<sup>2</sup> automatically and spuriously increasing when extra explanatory variables are added to the model:
+
+<img src="https://render.githubusercontent.com/render/math?math=\bar{R}^2 = 1- (1-R^2)\frac{n-1}{n-p-1}" width="200px">
+
+with **n** is the sample size and **p** is the total number of explanatory variables in the model.
+
+- **Adjusted R<sup>2</sup>** can be negative.
+- **Adjusted R<sup>2</sup>** will always be smaller than **R<sup>2</sup>**.
+- **Adjusted R<sup>2</sup>** increases only when the increase in **R<sup>2</sup>** is more than one would expect by chance.
+- If a set of explanatory variables with a predetermined hierarchy of importance are introduced into a regression one at a time, with the **Adjusted R<sup>2</sup>** computed each time, the level at which **Adjusted R<sup>2</sup>** reaches a maximum, and decreases afterward, would be the regression with the ideal combination of having the best fit without excess/unnecessary terms. 
 
 ## Logistic regression <a id="log_reg"></a>
 Logistic regression can be used when the dependent variable is binary in nature: A or B, 0 or 1, yes or no, diseased or non-diseased.
