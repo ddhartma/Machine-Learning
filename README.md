@@ -242,6 +242,24 @@ Once, the beta coefficients are calculated, a **t-test** is performed to check w
     etc.
     ```
 
+    ### R<sup>2</sup>
+    ```
+    from sklearn.metrics import r2_score
+    r2 = r2_score(y_test, y_test_pred)
+    print(r2)
+
+    RESULTS:
+    ------------
+    0.878324952758
+    ```
+    ### R<sup>2</sup> (2nd approach)
+    ```
+    print(model.score(X_test, y_test))
+
+    RESULTS:
+    ------------
+    0.878324952758
+    ```
 
 ### Coefficient of Determination (R<sup>2</sup>)
 **R<sup>2</sup>** is the proportion of the variation in the dependent variable that is predictable from the independent variable(s). 
@@ -267,7 +285,6 @@ Once, the beta coefficients are calculated, a **t-test** is performed to check w
     <img src="https://render.githubusercontent.com/render/math?math=SST = SSR %2B SSE" width="200px">
 
    
-
 - The most general definition of is **R<sup>2</sup>**:
 
     <img src="https://render.githubusercontent.com/render/math?math=R^2= 1- \frac{SSR}{SST}" width="170px">
@@ -276,8 +293,11 @@ Once, the beta coefficients are calculated, a **t-test** is performed to check w
 - A **baseline model** (R<sup>2</sup>=0), which always predicts **ȳ**, will have **R<sup>2</sup> = 0**. 
 - Models that have worse predictions than this baseline will have a negative R<sup>2</sup>, i.e. **R<sup>2</sup> < 0**.
 
+### Code - R<sup>2</sup>
+- Open Juypter Notebook ```R2 - Score.ipynb```
+
 ### Adjusted R<sup>2</sup>
-**Adjusted R<sup>2</sup>** is an attempt to account for the phenomenon of the R<sup>2</sup> automatically and spuriously increasing when extra explanatory variables are added to the model:
+**Adjusted R<sup>2</sup>** accounts for the phenomenon of the R<sup>2</sup> automatically and spuriously increasing when extra explanatory variables are added to the model:
 
 <img src="https://render.githubusercontent.com/render/math?math=\bar{R}^2 = 1- (1-R^2)\frac{n-1}{n-p-1}" width="200px">
 
