@@ -140,7 +140,7 @@ Mathematically, the beta coefficients (**b0** and **b1**) are determined so that
 
 Once, the beta coefficients are calculated, a **t-test** is performed to check whether or not these coefficients are significantly different from zero. A non-zero beta coefficients means that there is a **significant relationship** between the predictors (**X**) and the outcome variable (**Y**).
 
-### Code Example
+### Code Example - Single independent variable
 - Open Jupyter Notebook ```Linear Regression (Python).ipynb```
     ### Load Data
     ``` 
@@ -186,7 +186,85 @@ Once, the beta coefficients are calculated, a **t-test** is performed to check w
     plt.show()
     ```
     ![image47]
-    
+
+### Code Example - Multiple independent variables
+ - Open Jupyter Notebook ```Linear Regression multi-var.ipynb``` 
+    ### Load Data
+    ``` 
+    import pandas as pd
+    df = pd.read_csv("./hotels.csv")
+    df.head()
+    ```
+    ![image48]
+
+    ### Train Test Split
+    ```
+    X = df[["Gewinn", "Quadratmeter"]].values
+    Y = df[["Preis in Mio"]].values
+
+    from sklearn.model_selection import train_test_split
+
+    X_train, X_test, y_train, y_test = train_test_split(X, Y, random_state = 0, test_size = 0.25)
+    ```
+    ### Scikit Learn: Linear Regression
+    ```
+    from sklearn.linear_model import LinearRegression
+
+    model = LinearRegression()
+    model.fit(X_train, y_train)
+
+    RESULTS:
+    ------------
+    LinearRegression(copy_X=True, fit_intercept=True, n_jobs=1, normalize=False)
+
+    print(model.intercept_)
+    [ 6.48370247]
+
+    print(model.coef_)
+    [[  6.39855984e-06   3.89642288e-03]]
+    ```
+    ### Test
+    ```
+    y_test_pred = model.predict(X_test) 
+
+    for i in range(0, len(y_test_pred)):
+        print(str(y_test_pred[i][0]) + " - " + str(y_test[i][0]))
+
+    RESULTS:
+    ------------
+    15.4842877705 - 14.56
+    19.258489367 - 16.32
+    13.0593775565 - 13.09
+    25.4906851541 - 22.87
+    6.81600626706 - 8.94
+    21.6278221281 - 19.13
+    13.8979465655 - 13.77
+    etc.
+    ```
+
+
+### Coefficient of Determination (R<sup>2</sup>)
+**R<sup>2</sup>** is the proportion of the variation in the dependent variable that is predictable from the independent variable(s). 
+
+- **Mean** of observed Data
+
+    <img src="https://render.githubusercontent.com/render/math?math=\bar{y}= \frac{1}{n} \sum_{i=1}^{n} y_i" width="130px">
+
+- The **total sum of squares (SST)** (proportional to the variance of the data):
+
+    <img src="https://render.githubusercontent.com/render/math?math=SST= \sum_{i=1}^{n} (y_i - \bar{y})^2 " width="200px">
+
+- The sum of squares of residuals, also called the **residual sum of squares (SSR)**:
+
+    <img src="https://render.githubusercontent.com/render/math?math=SSR= \sum_{i=1}^{n} (y_i - \hat{y_i})^2 = \sum_{i=1}^{n} e_i" width="300px">
+
+- The most general definition of is **R<sup>2</sup>**:
+
+    <img src="https://render.githubusercontent.com/render/math?math=R^2= 1- \frac{SSR}{SST}" width="170px">
+
+- In the **best case** R<sup>2</sup>=1), the **modeled values** exactly match the **observed values**, which results in **SSR = 0** and **R<sup>2</sup> = 1**. 
+- A **baseline model** (R<sup>2</sup>=0), which always predicts **ȳ**, will have **R<sup>2</sup> = 0**. 
+- Models that have worse predictions than this baseline will have a negative R<sup>2</sup>, i.e. **R<sup>2</sup> < 0**
 
 ## Logistic regression <a id="log_reg"></a>
 Logistic regression can be used when the dependent variable is binary in nature: A or B, 0 or 1, yes or no, diseased or non-diseased.
