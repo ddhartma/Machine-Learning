@@ -103,12 +103,13 @@ Common types of machine learning algorithms for use with labeled data include th
 
 ## Supervised Learning <a id="sl"></a>
 ## Linear regression <a id="linear_reg"></a>
-Linear regression is used to predict the value of a dependent variable based on the value of an independent variable. For example, a linear regression algorithm could be trained to predict a salesperson’s annual sales (the dependent variable) based on its relationship to the salesperson’s education or years of experience (the independent variables.)
-A linear regression line has an equation of the form 
+- Linear regression is used to predict the value of a **dependent variable** based on the value of an **independent variable**. 
+- For example, a linear regression algorithm could be trained to predict a salesperson’s annual sales (the dependent variable) based on its relationship to the salesperson’s education or years of experience (the independent variables).
+- A linear regression line has an equation of the form 
 
-<img src="https://render.githubusercontent.com/render/math?math=Y = b0 %2B b1 \cdot X  %2B e" width="150px">
+    <img src="https://render.githubusercontent.com/render/math?math=Y = b0 %2B b1 \cdot X  %2B e" width="170px">
 
-where ***X*** is the explanatory (independent) variable and ***Y*** is the dependent variable. The slope of the line is ***b1***, and ***b0*** is the intercept (Y value when X = 0). ***e*** is the error term (also known as the residual errors), the part of Y that can be explained by the regression model.
+    where ***X*** is the explanatory (independent) variable and ***Y*** is the dependent variable. The slope of the line is ***b1***, and ***b0*** is the intercept (Y value when X = 0). ***e*** is the error term (also known as the residual errors), the part of Y that can be explained by the regression model. Overall, the residual errors (**e**) have approximately mean zero.
 
 The figure below illustrates the linear regression model, where:
 
@@ -118,11 +119,18 @@ The figure below illustrates the linear regression model, where:
 
 ![image2]
 
-From the scatter plot above, it can be seen that not all the data points fall exactly on the fitted regression line. Some of the points are above the blue curve and some are below it; overall, the residual errors (**e**) have approximately mean zero.
+- The sum of the squares of the residual errors are called the **RSS (Residual Sum of Squares)**.
 
-The sum of the squares of the residual errors are called the **Residual Sum of Squares or RSS**.
+    <img src="https://render.githubusercontent.com/render/math?math=RSS=\sum_{i=1}^n (y_i - \hat{y}_i)^2" width="210px">
+    
+    - **RSS** = Residual Sum of Squares
+    - **y<sub>i</sub>** = label (true value)
+    - **ŷ<sub>i</sub>** = predicted value
 
-The average variation of points around the fitted regression line is called the **Residual Standard Error or RSE**. This is one of the metrics used to evaluate the overall quality of the fitted regression model. The lower the **RSE**, the better it is.
+- The average variation of points around the fitted regression line is called the **RSE (Residual Standard Error)**. This is one of the metrics used to evaluate the overall quality of the fitted regression model. The lower the **RSE**, the better it is.
+
+    <img src="https://render.githubusercontent.com/render/math?math=RSE = \sqrt{\frac{1}{n-2}RSS}" width="190px">
+
 
 Since the mean error term is zero, the outcome variable y can be approximately estimated like this:
 
@@ -131,6 +139,54 @@ Since the mean error term is zero, the outcome variable y can be approximately e
 Mathematically, the beta coefficients (**b0** and **b1**) are determined so that the **RSS** is as minimal as possible. This method of determining the beta coefficients is technically called least squares regression or ordinary least squares (**OLS**) regression.
 
 Once, the beta coefficients are calculated, a **t-test** is performed to check whether or not these coefficients are significantly different from zero. A non-zero beta coefficients means that there is a **significant relationship** between the predictors (**X**) and the outcome variable (**Y**).
+
+### Code Example
+- Open Jupyter Notebook ```Linear Regression (Python).ipynb```
+    ### Load Data
+    ``` 
+    import pandas as pd
+    df = pd.read_csv("./wohnungspreise.csv")
+    df.head()
+    ```
+    ![image45]
+
+    ### Visualize Data
+    ```
+    %matplotlib inline
+    import matplotlib.pyplot as plt
+
+    plt.scatter(df["Quadratmeter"], df["Verkaufspreis"])
+    plt.show()
+    ```
+    ![image46]
+
+    ### Scikit Learn: Linear Regression
+    ```
+    from sklearn.linear_model import LinearRegression
+    model = LinearRegression()
+    model.fit(df[["Quadratmeter"]], df[["Verkaufspreis"]])
+
+    print("Intercept: " + str(model.intercept_))
+    print("Coef: " + str(model.coef_))
+
+    RESULTS:
+    ------------
+    Intercept: [ 3143.28481869]
+    Coef: [[ 5071.35242619]]
+    ```
+
+    ### Visualize Prediction
+    ```
+    min_x = min(df["Quadratmeter"])
+    max_x = max(df["Quadratmeter"])
+    predicted = model.predict([[min_x], [max_x]])
+
+    plt.scatter(df["Quadratmeter"], df["Verkaufspreis"])
+    plt.plot([min_x, max_x], predicted, color = "red")
+    plt.show()
+    ```
+    ![image47]
+    
 
 ## Logistic regression <a id="log_reg"></a>
 Logistic regression can be used when the dependent variable is binary in nature: A or B, 0 or 1, yes or no, diseased or non-diseased.
