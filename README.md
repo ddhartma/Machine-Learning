@@ -967,33 +967,62 @@ C is PAC-learnable by learning algorithm L using H if (only if) learner L will, 
 ![image44]
 
 ## Naive Bayes <a id="naive_bayes"></a>
-A Naive Bayes classifier is a probabilistic machine learning model that’s used for classification task. It adopts the principle of class conditional independence from the Bayes Theorem. 
+A Naive Bayes classifier is a probabilistic machine learning model that’s used for classification task. 
 
-Bayes Theorem:
+The assumption made here is that the predictors/features are independent. That is presence of one particular feature does not affect the other. Hence, it is called **naive**.
 
-<img src="https://render.githubusercontent.com/render/math?math=P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B)}" width="220px">
+Bayes Theorem allows us to integrate prior information with our data to come up with new information that we can use to confirm our possible suspicions.
 
-Using Bayes theorem, we can find the ***probability of A*** happening, given that ***B has occurred***. Here, **B** is the **evidence** and **A** is the **hypothesis**. The assumption made here is that the predictors/features are independent. That is presence of one particular feature does not affect the other. Hence, it is called naive.
+### Bayes Theorem:
 
-Example- playing golf: It is not suitable for playing golf if the outlook is rainy, temperature is hot, humidity is high and it is windy. 
+<img src="https://render.githubusercontent.com/render/math?math=P(h|D) = \frac{P(D|h) \cdot P(h)}{P(D)}" width="220px">
 
-- Y: Dependent variable - playing golf
-- X = (x1, x2, ..., xn): Independent variables (features) like temperature, humidity etc.
+where 
+- **P(h|D)** is the **posterior propability** ( --> the ***probability of h*** happening, given that ***D has occurred***)
+- **h** represents a **hypothesis** and 
+- **D** our **data**
 
-<img src="https://render.githubusercontent.com/render/math?math=P(Y|X) = \frac{P(X|Y) \cdot P(Y)}{P(X)}" width="220px">
+**Simple Example**: Fishing in a river
+- **P(C) = 60%** are catfish
+- **P(S) = 40%** are stripers
+- keep only fish if fish weight >  5lbs --> Law of total probability: **P(K) = P(K|S)*P(S) + P(K|C)*P(C) = .5*.4 + .6*1 = 0.8 (80%)**
+- 50% of stripers are > 5lbs (**P(K|S) = 50%**) and all catfish are > 5lbs (**P(K|C) = 100%**) 
+- **Question**: If we catch a fish and we get to keep it what is the probability the fish is a striper?
 
-By substituting X and expanding using the chain rule we get:
+- **Answer**: Use Bayes Theorem
+   
+    <img src="https://render.githubusercontent.com/render/math?math=P(S|K) = \frac{P(K|S) \cdot P(S)}{P(K)} = \frac{.5*.4}{.8} = 0.25" width="400px">
 
-<img src="https://render.githubusercontent.com/render/math?math=P(Y|x1,x2,...xn) = \frac{P(x1|Y) \cdot P(x2|Y) \cdot ... \cdot P(xn|Y) \cdot P(Y)}{P(x1) \cdot P(x2) \cdot ... \cdot P(xn)}" width="500px">
+    There is a 25% chance that we keep a fish that is a stripper.
 
-Now, you can obtain the values for each by looking at the dataset and substitute them into the equation. For all entries in the dataset, the denominator does not change, it remain static. Therefore, the denominator can be removed and a proportionality can be introduced.
+### Using Bayes Theorem for Bayesian Learning
+- We can now use Bayes rule to make a decision on which hypothesis is optimal in relation to our training data. We can do this by finding the maximum­ probability hypothesis given the data across all hypothesis. In math notation this looks like:
 
-<img src="https://render.githubusercontent.com/render/math?math=P(Y|x1,x2,...xn) = P(x1|Y) \cdot P(x2|Y) \cdot ... \cdot P(xn|Y) \cdot P(Y)" width="600px">
+    <img src="https://render.githubusercontent.com/render/math?math=h_{MAP} = argmax_{h \in H} P(h|D)" width="350px">
 
-In the actualcase of ***playing golf***, the class variable **Y** has only two outcomes, **yes** or **no**. There could be cases where the classification could be multivariate. Therefore, we need to find the class y with maximum probability.
+    MAP = Maximum a Posteriori
 
-<img src="https://render.githubusercontent.com/render/math?math=Y = argmax(P(Y|x1,x2,...xn))" width="350px">
+    For all entries in the dataset, the denominator does not change, it remain static. Therefore, the denominator can be removed and a proportionality can be introduced.
 
+- If all hypothesis P(h)'s are equivalent we instead can compute **P(h|D)** using **maximum likelihood**
+
+    <img src="https://render.githubusercontent.com/render/math?math=h_{ML} = argmax_{h \in H} P(D|h)" width="350px">    
+
+    ML = Maximum Likelihood
+
+### Bayesian Classification 
+- So far we found that the most probable hypothesis is **h<sub>MAP</sub> for a given dataset **D**. 
+- Question: Given a new **x**, what is the best classification? 
+- Often **h<sub>MAP</sub>(x)** is not the most propable classification.
+- **Bayes optimal classifier**:
+    
+    <img src="https://render.githubusercontent.com/render/math?math=argmax_{v_j \in V} \sum_{h_j\in H} P(v_j|h_i)P(h_i|D)" width="350px">
+
+    **v<sub>j</sub>** = set of possible classifications assigned by H
+
+- Example:
+
+    ![image49]
 
 ## Neural networks <a id="neural_net"></a>
 Primarily leveraged for **deep learning** algorithms, neural networks process training data by mimicking the interconnectivity of the human brain through layers of nodes. Each node is made up of inputs, weights, a bias (or threshold), and an output. If that output value exceeds a given threshold, it “fires” or activates the node, passing data to the next layer in the network. Neural networks learn this mapping function through supervised learning, adjusting based on the loss function through the process of gradient descent. When the cost function is at or near zero, we can be confident in the model’s accuracy to yield the correct answer.
