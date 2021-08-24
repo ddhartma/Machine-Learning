@@ -143,7 +143,7 @@ Once, the beta coefficients are calculated, a **t-test** is performed to check w
 ### Code Example - Single independent variable
 - Open Jupyter Notebook ```Linear Regression (Python).ipynb```
     ### Load Data
-    ``` 
+    ```python 
     import pandas as pd
     df = pd.read_csv("./wohnungspreise.csv")
     df.head()
@@ -151,7 +151,7 @@ Once, the beta coefficients are calculated, a **t-test** is performed to check w
     ![image45]
 
     ### Visualize Data
-    ```
+    ```python
     %matplotlib inline
     import matplotlib.pyplot as plt
 
@@ -161,7 +161,7 @@ Once, the beta coefficients are calculated, a **t-test** is performed to check w
     ![image46]
 
     ### Scikit Learn: Linear Regression
-    ```
+    ```python
     from sklearn.linear_model import LinearRegression
     model = LinearRegression()
     model.fit(df[["Quadratmeter"]], df[["Verkaufspreis"]])
@@ -176,7 +176,7 @@ Once, the beta coefficients are calculated, a **t-test** is performed to check w
     ```
 
     ### Visualize Prediction
-    ```
+    ```python
     min_x = min(df["Quadratmeter"])
     max_x = max(df["Quadratmeter"])
     predicted = model.predict([[min_x], [max_x]])
@@ -190,7 +190,7 @@ Once, the beta coefficients are calculated, a **t-test** is performed to check w
 ### Code Example - Multiple independent variables
  - Open Jupyter Notebook ```Linear Regression multi-var.ipynb``` 
     ### Load Data
-    ``` 
+    ```python 
     import pandas as pd
     df = pd.read_csv("./hotels.csv")
     df.head()
@@ -198,7 +198,7 @@ Once, the beta coefficients are calculated, a **t-test** is performed to check w
     ![image48]
 
     ### Train Test Split
-    ```
+    ```python
     X = df[["Gewinn", "Quadratmeter"]].values
     Y = df[["Preis in Mio"]].values
 
@@ -207,7 +207,7 @@ Once, the beta coefficients are calculated, a **t-test** is performed to check w
     X_train, X_test, y_train, y_test = train_test_split(X, Y, random_state = 0, test_size = 0.25)
     ```
     ### Scikit Learn: Linear Regression
-    ```
+    ```python
     from sklearn.linear_model import LinearRegression
 
     model = LinearRegression()
@@ -224,7 +224,7 @@ Once, the beta coefficients are calculated, a **t-test** is performed to check w
     [[  6.39855984e-06   3.89642288e-03]]
     ```
     ### Test
-    ```
+    ```python
     y_test_pred = model.predict(X_test) 
 
     for i in range(0, len(y_test_pred)):
@@ -243,7 +243,7 @@ Once, the beta coefficients are calculated, a **t-test** is performed to check w
     ```
 
     ### R<sup>2</sup>
-    ```
+    ```python
     from sklearn.metrics import r2_score
     r2 = r2_score(y_test, y_test_pred)
     print(r2)
@@ -253,7 +253,7 @@ Once, the beta coefficients are calculated, a **t-test** is performed to check w
     0.878324952758
     ```
     ### R<sup>2</sup> (2nd approach)
-    ```
+    ```python
     print(model.score(X_test, y_test))
 
     RESULTS:
@@ -597,7 +597,7 @@ In pruning, you trim off the branches of the tree, i.e., remove the decision nod
 
 ### Example code
 - Libraries
-    ```
+    ```python
     import numpy as np
     import matplotlib.pyplot as plt 
     import pandas as pd
@@ -627,37 +627,37 @@ In pruning, you trim off the branches of the tree, i.e., remove the decision nod
     import pydotplus
     ```
 - Load the dataset. It consists of 5 features, UserID, Gender, Age, EstimatedSalary and Purchased.
-    ```
+    ```python
     data = pd.read_csv('/Users/ML/DecisionTree/Social.csv')
     data.head()
     ```
 - Create feature columns, dependent and independent variables
-    ```
+    ```python
     feature_cols = ['Age','EstimatedSalary']
     X = data.iloc[:,[2,3]].values
     y = data.iloc[:,4].values
     ```
 - Train-Test-Split
-    ```
+    ```python
     X_train, X_test, y_train, y_test =  train_test_split(X,y,test_size = 0.25, random_state= 0)
     ```
 - Perform feature scaling
-    ```
+    ```python
     sc_X = StandardScaler()
     X_train = sc_X.fit_transform(X_train)
     X_test = sc_X.transform(X_test)
     ```
 - Fit the model in the Decision Tree classifier
-    ```
+    ```python
     classifier = DecisionTreeClassifier()
     classifier = classifier.fit(X_train,y_train)
     ```
 - Make predictions
-    ```
+    ```python
     y_pred = classifier.predict(X_test)
     ```
 - Check accuracy
-    ```
+    ```python
     print('Accuracy Score:', metrics.accuracy_score(y_test,y_pred))
 
     RESULTS:
@@ -665,7 +665,7 @@ In pruning, you trim off the branches of the tree, i.e., remove the decision nod
     The decision tree classifier gave an accuracy of 91%.
     ```
 - Confusion Matrix
-    ```
+    ```python
     cm = confusion_matrix(y_test, y_pred)
     
     RESULTS:
@@ -674,10 +674,10 @@ In pruning, you trim off the branches of the tree, i.e., remove the decision nod
     array([[64,  4],
        [ 2, 30]])
 
-    It means 6 observations have been classified as false.
+    # It means 6 observations have been classified as false.
     ```
 - Let us first visualize the model prediction results.
-    ```
+    ```python
     X_set, y_set = X_test, y_test
     X1, X2 = np.meshgrid(np.arange(start = X_set[:,0].min()-1, stop= X_set[:,0].max()+1, step = 0.01),np.arange(start = X_set[:,1].min()-1, stop= X_set[:,1].max()+1, step = 0.01))
     plt.contourf(X1,X2, classifier.predict(np.array([X1.ravel(), X2.ravel()]).T).reshape(X1.shape)alpha=0.75, cmap = ListedColormap(("red","green")))
@@ -692,7 +692,7 @@ In pruning, you trim off the branches of the tree, i.e., remove the decision nod
     ```
     ![image16]
 - Let us also visualize the tree:
-    ```
+    ```python
     dot_data = StringIO()
     export_graphviz(classifier, out_file=dot_data,  
                 filled=True, rounded=True,
@@ -705,7 +705,7 @@ In pruning, you trim off the branches of the tree, i.e., remove the decision nod
     - **criterion**: optional (default=”gini”) or Choose attribute selection measure: This parameter allows us to use the different-different attribute selection measure. Supported criteria are “gini” for the Gini index and “entropy” for the information gain.
     - **splitter**: string, optional (default=”best”) or Split Strategy: This parameter allows us to choose the split strategy. Supported strategies are “best” to choose the best split and “random” to choose the best random split.
     - **max_depth**: int or None, optional (default=None) or Maximum Depth of a Tree: The maximum depth of the tree. If None, then nodes are expanded until all the leaves contain less than min_samples_split samples. The higher value of maximum depth causes overfitting, and a lower value causes underfitting (Source).
-    ```
+    ```python
     # Create Decision Tree classifer object
     classifier = DecisionTreeClassifier(criterion="entropy", max_depth=3) 
 
@@ -723,7 +723,7 @@ In pruning, you trim off the branches of the tree, i.e., remove the decision nod
     The classification rate increased to 94%.
     ```
 - Visualize the **pruned** Decision Tree
-    ```
+    ```python
     dot_data = StringIO()
     export_graphviz(classifier, out_file=dot_data,  
                     filled=True, rounded=True,
